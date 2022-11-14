@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>upload phòng</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+  <script type="text/javascript" th:src="@{/js/urlGlo.js}"></script>
+  <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+  <script type="text/javascript" th:src="@{/js/main.js}"></script>
+  <script type="text/javascript" th:src="@{/js/authen.js}"></script>
+  <script type="text/javascript" th:src="@{/js/filteruser.js}"></script>
+  <script type="text/javascript" th:src="@{/js/uploadroom.js}"></script>
+
+</head>
+
+<body>
+
+<!-- menu -->
+<div id="header">
+
+</div>
+
+
+<!-- danh sách phòng -->
+<div class="col-md-12 uploads">
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Thông tin phòng</h4>
+      <!-- <form> -->
+      <label>Tiêu đề bài đăng</label>
+      <input id="tieude" type="text" name="" class="col-md-9 form-control">
+      <label>Loại phòng</label>
+      <select class="col-md-9 form-control" id="loaiphong">
+        <option>Loại phòng</option>
+      </select>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <label>Sức chứa</label>
+          <input id="succhua" type="number" name="" min="1" class="form-control col-md-4">
+        </div>
+        <div class="col-md-6">
+          <label>Giới tính</label><br>
+          <input type="radio" name="sex" value="nam" checked id="nam"> <label for="nam">nam</label>
+          <input type="radio" name="sex" value="nữ" id="nu"> <label for="nu">Nữ</label>
+          <input type="radio" name="sex" value="nam,nữ" id="none"> <label for="none">tất cả</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>Diện tích</label><br>
+          <input type="number" id="dientich" name="" min="1" class="form-control col-md-8 prices">: m2
+        </div>
+        <div class="col-md-4">
+          <label>Giá thuê</label><br>
+          <input type="number" id="giathue" name="" min="1" class="form-control col-md-6 prices"
+                 placeholder="nhập giá cho thuê">
+          VND/Phòng
+        </div>
+        <div class="col-md-4">
+          <label>Đặt cọc</label><br>
+          <input type="number" id="datcoc" name="" min="1" class="form-control col-md-6 prices"
+                 placeholder="nhập giá cho thuê">
+          VND/Phòng
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label>Tiền điện</label>
+          <input type="number" id="tiendien" name="" min="1" class="form-control col-md-10">
+        </div>
+        <div class="col-md-4">
+          <label>Tiền nước</label><br>
+          <input type="number" id="tiennuoc" name="" min="1" class="form-control col-md-10">
+        </div>
+        <div class="col-md-4">
+          <label>Internet/ Truyền hình cáp</label><br>
+          <input type="number" id="wifi" name="" min="1" class="form-control col-md-10">
+        </div>
+      </div>
+
+      <!-- địa chỉ -->
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Chọn địa chỉ</h5>
+        </div>
+        <div class="col-md-4">
+          <select id="tinh">
+            <option>--- Chọn tỉnh thành ---</option>
+            <option>Hà nội</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select id="huyen">
+            <option>--- Chọn Quận/huyện ---</option>
+            <option>Gia lâm</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select id="xa">
+            <option>--- Chọn Phường/Xã ---</option>
+            <option>Trâu Qùy</option>
+          </select>
+        </div>
+        <div class="col-md-9">
+          <label>Tên đường</label>
+          <input type="text" name="" id="tenduong" placeholder="Nhập tên đường/ Số nhà của bạn"
+                 class="form-control">
+        </div>
+        <div class="col-md-12">
+          <label>Mô tả</label>
+          <textarea class="form-control" id="mota"></textarea>
+        </div>
+      </div>
+
+      <!-- tiện ích -->
+      <div class="row" id="listUtility">
+        <div class="col-md-12">
+          <h5 class="title-tienich">Tiện ích</h5>
+        </div>
+        <div class="col-md-3">
+          <label class="containers">
+            <div class="lb"><i class="fas fa-toilet"></i>WC riêng</div>
+            <input type="checkbox" class="toilet">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="col-md-3">
+          <label class="containers">
+            <div class="lb"><i class="fas fa-motorcycle"></i>Chỗ để xe</div>
+            <input type="checkbox" class="bike">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+      </div>
+      <!-- </form> -->
+    </div>
+
+    <div class="col-md-4 chooseImage">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Chọn ảnh</h5>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row" id="preview">
+                <!-- chọn ảnh -->
+                <div class="col-md-12" id="chon-anhs">
+                  <div id="choose-image" class="choose-image"
+                       onclick="document.getElementById('choosefile').click(); return false;">
+                    <p><i class="fas fa-camera" id="camera"></i></p>
+                    <p id="numimage">Đăng từ 3 ảnh</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- chọn ảnh -->
+
+        <input type="file" id="choosefile" multiple onchange="readURL(this);" style="visibility: hidden;">
+
+        <div class="col-md-12">
+          <img id="loading_uploadroom" src="image/loading_1.gif">
+          <button class="btn btn-warning upload-submit" onclick="uploadRoom()">Đăng Tin</button>
+        </div>
+      </div>
+
+    </div>
+    <!-- content -->
+  </div>
+</div>
+
+
+
+<!-- footer -->
+
+
+
+<!-- Large modal search -->
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true" id="mymodal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col-md-11">
+          <form>
+            <input class="form-control mr-sm-12" type="search" placeholder="Search" aria-label="Search"
+                   id="search-full">
+          </form>
+        </div>
+        <div class="col-md-1">
+          <i class="fa fa-remove remove"></i>
+        </div>
+        <div class="col-md-12 go-search">
+          <a href="#">Đi đến trang tìm kiếm</a>
+        </div>
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <p>có 4 kết quả được tìm thấy</p>
+      </div>
+      <div class="list-room-search col-lg-12">
+        <div class="row">
+          <!-- 1 phòng -->
+          <div class="col-md-12 signle-room-search">
+            <div class="row">
+              <div class="col-md-3">
+                <a href=""><img class="image-search" src="image/anh.jpg"></a>
+              </div>
+              <div class="col-md-7 detail-search">
+                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
+                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
+                </p>
+                <p>Đường: Ngô xuân quảng, học viện</p>
+                <p>Giá: 9.500.000đ/tháng</p>
+              </div>
+              <div class="col-md-2 connect">
+                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
+                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
+                <p>Nguyễn nam khanh</p>
+                <p class="phone">0217833343</p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- 1 phòng -->
+          <div class="col-md-12 signle-room-search">
+            <div class="row">
+              <div class="col-md-3">
+                <a href=""><img class="image-search" src="image/anh1.jpg"></a>
+              </div>
+              <div class="col-md-7 detail-search">
+                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
+                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
+                </p>
+                <p>Đường: Ngô xuân quảng, học viện</p>
+                <p>Giá: 9.500.000đ/tháng</p>
+              </div>
+              <div class="col-md-2 connect">
+                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
+                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
+                <p>Nguyễn nam khanh</p>
+                <p class="phone">0217833343</p>
+
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 1 phòng -->
+          <div class="col-md-12 signle-room-search">
+            <div class="row">
+              <div class="col-md-3">
+                <a href=""><img class="image-search" src="image/anh2.jpg"></a>
+              </div>
+              <div class="col-md-7 detail-search">
+                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
+                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
+                </p>
+                <p>Đường: Ngô xuân quảng, học viện</p>
+                <p>Giá: 9.500.000đ/tháng</p>
+              </div>
+              <div class="col-md-2 connect">
+                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
+                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
+                <p>Nguyễn nam khanh</p>
+                <p class="phone">0217833343</p>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-12 more">
+            <p><a href="">Xem thêm</a></p>
+          </div>
+          <div class="col-md-12">
+            <hr>
+          </div>
+
+
+        </div>
+      </div>
+      <!-- lịch sử tìm kiếm -->
+      <div class="col-md-12">
+        <p>Lịch sử tìm kiếm</p>
+      </div>
+
+      <div class="col-md-12 history">
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <p><a href="">trâu quỳ gia lâm</a></p>
+          </div>
+          <div class="col-md-3">
+            <p>Thời gian: 2022-19-06</p>
+          </div>
+          <div class="col-md-1"><i class="fa fa-remove"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div id="preview">
+
+</div> -->
+</body>
+<script>
+  window.onload = function () {
+    loadMenu();
+    checkUser();
+    findAllUtilities();
+    findAllTypeRoom();
+    loadAddress();
+    loadInit();
+  }
+</script>
+
+
+
+</html>
