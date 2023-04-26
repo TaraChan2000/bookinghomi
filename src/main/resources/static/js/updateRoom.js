@@ -3,15 +3,14 @@ var listImageRoom = null;
 async function loadDetailRoomUpdate() {
     var token = localStorage.getItem("token");
     var id = window.location.search.split('=')[1];
-    var url = 'http://' + urlFirst + ':8080/api/public/detailRoomForAll?id=' + id
+    var url = 'http://' + urlFirst + '/api/public/detailRoomForAll?id=' + id
     const res = await fetch(url, {
         method: 'GET',
         headers: new Headers({
         })
     })
     room = await res.json();
-
-    const resps = await fetch('http://'+urlFirst+':8080/api/userlogged', {
+    const resps = await fetch('http://'+urlFirst+'/api/userlogged', {
         method: 'POST',
         headers: new Headers({
             'Authorization': 'Bearer ' + token,
@@ -20,8 +19,8 @@ async function loadDetailRoomUpdate() {
     })
     var user = await resps.json();
     if(user.id != room.user.id){
-        alert("bạn không đủ quyền!")
-        window.location.replace("http://www.w3schools.com");
+        alert("Access denied!")
+        window.location.replace("trang-chu");
         return
     }
     console.log(room)
@@ -50,23 +49,22 @@ async function loadDetailRoomUpdate() {
     document.getElementById("succhua").value = room.quantity
     document.getElementById("dientich").value = room.area
     document.getElementById("giathue").value = room.price
-    document.getElementById("datcoc").value = room.deposit
-    document.getElementById("tiendien").value = room.electricity
-    document.getElementById("tiennuoc").value = room.water
-    document.getElementById("wifi").value = room.wifi
+    document.getElementById("slphong").value = room.quantityRoom
+    banners = room.banner
+    document.getElementById("bannerupload").src = room.banner
     loadAddressUpdate(room.address.town.province.id, room.address.town.id, room.address.id)
     document.getElementById("tenduong").value = room.detailAddress
-    document.getElementById("mota").value = room.description
+    tinyMCE.get('editor').setContent(room.description)
 
 
     // load anh
-    const resp = await fetch('http://'+urlFirst+':8080/api/public/imageByRoom?id=' + room.id, { method: 'GET' })
+    const resp = await fetch('http://'+urlFirst+'/api/public/imageByRoom?id=' + room.id, { method: 'GET' })
     var listImageRoom = await resp.json();
-    var mains = '<div class="col-md-12"><p>Ảnh phòng đã đăng</p></div>'
+    var mains = '<div class="col-md-12"><p>Room photo posted</p></div>'
     for(i=0; i<listImageRoom.length; i++){
         mains += '<div class="col-md-4" style="margin-top: 10px">'+
             '<img src="'+listImageRoom[i].link+'" style="width: 100%;height: 100px;">'+
-            '<button onclick="deleteImage('+listImageRoom[i].id+')" class="btn-danger col-md-12">xóa</button>'+
+            '<button onclick="deleteImage('+listImageRoom[i].id+')" class="btn-danger col-md-12">Delete</button>'+
             '</div>'
     }
     document.getElementById("listImageUpdate").innerHTML = mains
@@ -74,8 +72,8 @@ async function loadDetailRoomUpdate() {
 
 async function deleteImage(idImage){
     var token = localStorage.getItem("token");
-    if (window.confirm('Bạn muốn xóa ảnh này? ảnh được xóa sẽ không thể khôi phục')) {
-        var urlAccount = 'http://'+urlFirst+':8080/api/user/deleteImageRoom?id='+idImage;
+    if (window.confirm('Do you want to delete this image? Deleted photos cannot be recovered')) {
+        var urlAccount = 'http://'+urlFirst+'/api/user/deleteImageRoom?id='+idImage;
         const response = await fetch(urlAccount, {
             method: 'GET',
             headers: new Headers({
@@ -83,17 +81,17 @@ async function deleteImage(idImage){
             })
         });
         if(response.status<300){
-            alert("đã xóa ảnh");
+            alert("delete image successful");
             location.reload()
         }
     }
 }
-
+var banners =  ''
 async function uploadRoom() {
 
     var token = localStorage.getItem("token");
 
-    var urlAccount = 'http://'+urlFirst+':8080/api/userlogged';
+    var urlAccount = 'http://'+urlFirst+'/api/userlogged';
     const response = await fetch(urlAccount, {
         method: 'POST',
         headers: new Headers({
@@ -102,14 +100,10 @@ async function uploadRoom() {
         })
     });
     var account = await response.json();
-    if(account.numOfFree == 0 && account.money < 5000){
-        alert("số lượt miễn phí đã hết, hãy nạp thêm tiền")
-        return
-    }
 
     document.getElementById("loading_uploadroom").style.width = '30%'
     const listLink = []
-    var urlUpload = 'http://'+urlFirst+':8080/api/public/upload';
+    var urlUpload = 'http://'+urlFirst+'/api/public/upload';
     for (i = 0; i < listFile.length; i++) {
         const formData = new FormData()
         formData.append("file", listFile[i]);
@@ -146,34 +140,77 @@ async function uploadRoom() {
         }
     }
 
+    const filePath = document.getElementById('bannerimg')
+    const formDatas = new FormData()
+    formDatas.append("file", filePath.files[0]);
+    const resp = await fetch(urlUpload, {
+        method: 'POST',
+        headers: new Headers({
+        }),
+        body: formDatas
+    });
+    if(resp.status < 300){
+        banners = await resp.text();
+    }
+
     var loaiphong = document.getElementById("loaiphong").value
     var succhua = document.getElementById("succhua").value
     var gioitinh = gioitinhs
     var dientich = document.getElementById("dientich").value
     var giathue = document.getElementById("giathue").value
-    var datcoc = document.getElementById("datcoc").value
-    var tiendien = document.getElementById("tiendien").value
-    var tiennuoc = document.getElementById("tiennuoc").value
-    var wifi = document.getElementById("wifi").value
     var tenduong = document.getElementById("tenduong").value
+    var slphong = document.getElementById("slphong").value
     var tieude = document.getElementById("tieude").value
-    var mota = document.getElementById("mota").value
+    var mota = tinyMCE.get('editor').getContent()
     var xa = document.getElementById("xa").value
 
+    if(tieude === "" || dientich === "" || succhua === "" || giathue === ""){
+        alert("Title can't be left blank")
+        return;
+    }
+    if(tieude === "" ){
+        alert("Title can't be left blank")
+        return;
+    }
+    if(dientich === "" ){
+        alert("Area can't be left blank")
+        return;
+    }
+    if(succhua === "" ){
+        alert("Capacity can't be left blank")
+        return;
+    }
+    if(giathue === "" ){
+        alert("Price can't be left blank")
+        return;
+    }
+    if(slphong === "" ){
+        alert("Quantity room can't be left blank")
+        return;
+    }
+    if(succhua < 0 ){
+        alert("Capacity is invalid!")
+        return;
+    }
+    if(dientich < 0 ){
+        alert("Area is invalid!")
+        return;
+    }
+    if(giathue < 0 ){
+        alert("Price is invalid!")
+        return;
+    }
     var rooms = {
         "id": room.id,
         "title": tieude,
         "price": giathue,
         "sex": gioitinh,
         "quantity": succhua,
-        "deposit": datcoc,
         "area": dientich,
         "description": mota,
-        "electricity": tiendien,
-        "water": tiennuoc,
-        "wifi": wifi,
-        "actived":room.actived,
-        "deleted": room.deleted,
+        "quantityRoom": slphong,
+        "deleted": 0,
+        "banner":banners,
         "roomStatus": {
             "id": 1
         },
@@ -187,7 +224,7 @@ async function uploadRoom() {
         "utilities": listUtilities
     }
 
-    const res = await fetch('http://'+urlFirst+':8080/api/user/updaterooms', {
+    const res = await fetch('http://'+urlFirst+'/api/user/updaterooms', {
         method: 'POST',
         headers: new Headers({
             'Authorization': 'Bearer ' + token,
@@ -196,7 +233,7 @@ async function uploadRoom() {
         body: JSON.stringify(rooms)
     })
     if(res.status == 500){
-        alert("bạn không đủ quyền update")
+        alert("Access denied")
         document.getElementById("loading_uploadroom").style.width = '0%'
         return
     }
@@ -210,7 +247,7 @@ async function uploadRoom() {
                     "id": roomResult.id
                 }
             }
-            const resp = await fetch('http://'+urlFirst+':8080/api/user/roomImage', {
+            const resp = await fetch('http://'+urlFirst+'/api/user/roomImage', {
                 method: 'POST',
                 headers: new Headers({
                     'Authorization': 'Bearer ' + token,
@@ -220,11 +257,25 @@ async function uploadRoom() {
             })
         }
 
-        alert("update phòng thành công!")
+        swal({
+            title: "Notification",
+            text: "Update successful!",
+            type: "success"
+        },
+        function(){
+            window.location.replace("myPost")
+        });
     }
 
     else if (res.status >= 300) {
-        alert("update phòng thất bại")
+        swal({
+            title: "Notification",
+            text: "Update error",
+            type: "error"
+        },
+        function(){
+            // window.location.reload();
+        });
     }
 
     document.getElementById("loading_uploadroom").style.width = '0%'
@@ -232,17 +283,8 @@ async function uploadRoom() {
 
 
 
-
-
-
-
-
-
-
-
-
 async function loadAddressUpdate(idtinh, idhuyen, idxa) {
-    var urladd = 'http://'+urlFirst+':8080/api/public/province';
+    var urladd = 'http://'+urlFirst+'/api/public/province';
     const response = await fetch(urladd, {
         method: 'GET',
         headers: new Headers({
@@ -256,6 +298,7 @@ async function loadAddressUpdate(idtinh, idhuyen, idxa) {
     var xa = document.getElementById("xa");
 
     var pro = null
+    console.log(province)
     for (i = 0; i < province.length; i++) {
         var option = document.createElement("option");
         option.text = province[i].name;
@@ -267,57 +310,35 @@ async function loadAddressUpdate(idtinh, idhuyen, idxa) {
     }
     document.getElementById("tinh").value = idtinh
 
-    var hu = null
-    for(i=0; i< pro.towns.length; i++){
+    huyen.innerHTML = '';
+    var urlahuyen = 'http://'+urlFirst+'/api/public/town?id='+idtinh;
+    const res = await fetch(urlahuyen, {
+        method: 'GET',
+        headers: new Headers({
+        })
+    });
+    var town = await res.json();
+    for (i = 0; i < town.length; i++) {
         var option = document.createElement("option");
-        option.text = pro.towns[i].name;
-        option.value = pro.towns[i].id;
+        option.text = town[i].name;
+        option.value = town[i].id;
         huyen.add(option);
-        if(pro.towns[i].id == idhuyen){
-            hu = pro.towns[i]
-        }
     }
     document.getElementById("huyen").value = idhuyen
 
-    for(i=0; i<hu.villages.length; i++){
+    xa.innerHTML = '';
+    var urlxa = 'http://'+urlFirst+'/api/public/village?id='+idhuyen;
+    const resp = await fetch(urlxa, {
+        method: 'GET',
+        headers: new Headers({
+        })
+    });
+    var village = await resp.json();
+    for (i = 0; i < village.length; i++) {
         var option = document.createElement("option");
-        option.text = hu.villages[i].name;
-        option.value = hu.villages[i].id;
+        option.text = village[i].name;
+        option.value = village[i].id;
         xa.add(option);
     }
     document.getElementById("xa").value = idxa
-
-    tinh.onchange = function () {
-        huyen.innerHTML = '';
-        for (i = 0; i < province.length; i++) {
-            if (Number(province[i].id) === Number(tinh.value)) {
-                for (j = 0; j < province[i].towns.length; j++) {
-                    var option = document.createElement("option");
-                    option.text = province[i].towns[j].name;
-                    option.value = province[i].towns[j].id;
-                    huyen.add(option);
-                }
-            }
-        }
-    }
-
-    huyen.onchange = function () {
-        xa.innerHTML = '';
-        for (i = 0; i < province.length; i++) {
-            if (Number(province[i].id) === Number(tinh.value)) {
-                for (j = 0; j < province[i].towns.length; j++) {
-                    if (Number(province[i].towns[j].id) === Number(huyen.value)) {
-                        console.log(province[i].towns[j])
-                        for (k = 0; k < province[i].towns[j].villages.length; k++) {
-                            var option = document.createElement("option");
-                            option.text = province[i].towns[j].villages[k].name;
-                            option.value = province[i].towns[j].villages[k].id;
-                            xa.add(option);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }

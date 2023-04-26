@@ -1,7 +1,7 @@
 var userUpdate = null;
 async function loadUserUpdate() {
     var token = localStorage.getItem("token");
-    const res = await fetch('http://' + urlFirst + ':8080/api/userlogged', {
+    const res = await fetch('http://' + urlFirst + '/api/userlogged', {
         method: 'POST',
         headers: new Headers({
             'Authorization': 'Bearer ' + token,
@@ -21,14 +21,14 @@ async function loadUserUpdate() {
 async function updateUser(){
     document.getElementById("img_loading").style.width = '50%';
     var token = localStorage.getItem("token");
-    var url = 'http://'+urlFirst+':8080/api/updateUser'
+    var url = 'http://'+urlFirst+'/api/updateUser'
     var email = document.getElementById("email").value
     var phone = document.getElementById("phone").value
     var village = document.getElementById("xa").value
 
 
     //upload image
-    var uploadimg = 'http://'+urlFirst+':8080/api/public/upload';
+    var uploadimg = 'http://'+urlFirst+'/api/public/upload';
     const filePath = document.getElementById('file')
     var linkimage = userUpdate.avatar
     if(filePath.files.length != 0){
@@ -63,17 +63,17 @@ async function updateUser(){
     });
     var result = await resp.text();
     if(result === '0' || resp.status > 300){
-        alert("update thất bại")
+        alert("update error")
     }
     else if(result === '1' || resp.status < 300){
-        alert("update thành công")
+        alert("update successful")
     }
     document.getElementById("img_loading").style.width = '0%';
 }
 
 async function loadAddressUserUpdate(idtinh, idhuyen, idxa) {
 
-    var urladd = 'http://'+urlFirst+':8080/api/public/province';
+    var urladd = 'http://'+urlFirst+'/api/public/province';
     const response = await fetch(urladd, {
         method: 'GET',
         headers: new Headers({
@@ -99,57 +99,35 @@ async function loadAddressUserUpdate(idtinh, idhuyen, idxa) {
     }
     document.getElementById("tinh").value = idtinh
 
-    var hu = null
-    for(i=0; i< pro.towns.length; i++){
+    huyen.innerHTML = '';
+    var urlahuyen = 'http://'+urlFirst+'/api/public/town?id='+idtinh;
+    const res = await fetch(urlahuyen, {
+        method: 'GET',
+        headers: new Headers({
+        })
+    });
+    var town = await res.json();
+    for (i = 0; i < town.length; i++) {
         var option = document.createElement("option");
-        option.text = pro.towns[i].name;
-        option.value = pro.towns[i].id;
+        option.text = town[i].name;
+        option.value = town[i].id;
         huyen.add(option);
-        if(pro.towns[i].id == idhuyen){
-            hu = pro.towns[i]
-        }
     }
     document.getElementById("huyen").value = idhuyen
 
-    for(i=0; i<hu.villages.length; i++){
+    xa.innerHTML = '';
+    var urlxa = 'http://'+urlFirst+'/api/public/village?id='+idhuyen;
+    const resp = await fetch(urlxa, {
+        method: 'GET',
+        headers: new Headers({
+        })
+    });
+    var village = await resp.json();
+    for (i = 0; i < village.length; i++) {
         var option = document.createElement("option");
-        option.text = hu.villages[i].name;
-        option.value = hu.villages[i].id;
+        option.text = village[i].name;
+        option.value = village[i].id;
         xa.add(option);
     }
     document.getElementById("xa").value = idxa
-
-    tinh.onchange = function () {
-        huyen.innerHTML = '';
-        for (i = 0; i < province.length; i++) {
-            if (Number(province[i].id) === Number(tinh.value)) {
-                for (j = 0; j < province[i].towns.length; j++) {
-                    var option = document.createElement("option");
-                    option.text = province[i].towns[j].name;
-                    option.value = province[i].towns[j].id;
-                    huyen.add(option);
-                }
-            }
-        }
-    }
-
-    huyen.onchange = function () {
-        xa.innerHTML = '';
-        for (i = 0; i < province.length; i++) {
-            if (Number(province[i].id) === Number(tinh.value)) {
-                for (j = 0; j < province[i].towns.length; j++) {
-                    if (Number(province[i].towns[j].id) === Number(huyen.value)) {
-                        console.log(province[i].towns[j])
-                        for (k = 0; k < province[i].towns[j].villages.length; k++) {
-                            var option = document.createElement("option");
-                            option.text = province[i].towns[j].villages[k].name;
-                            option.value = province[i].towns[j].villages[k].id;
-                            xa.add(option);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }

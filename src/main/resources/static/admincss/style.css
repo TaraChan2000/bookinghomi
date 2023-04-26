@@ -1,0 +1,48 @@
+.heads{
+	margin-top: 30px;
+}
+.chontg{
+	margin-bottom: 10px;
+}
+
+.addbtn{
+	margin-top: 30px;
+}
+
+.addbtn a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.imgroom_admin{
+	width: 60%;
+}
+.add-form{
+	min-width: 800px;
+	min-height: 500px;
+	box-sizing: border-box;
+	box-shadow: 1px 1px 2px 2px gray;
+	margin: auto;
+	margin-top: 30px;
+	background-color: #fff;
+}
+
+.input-add{
+	padding-left: 30px;
+	padding-top: 30px;
+}
+.input-add label{
+	margin-top: 20px;
+}
+
+.input-add button{
+	width: 100%;
+	margin-top: 30px;
+}
+.input-add-right img{
+	width: 137%;
+	margin-left: -12%;
+}
+.avatar_user{
+	width: 60%;
+}

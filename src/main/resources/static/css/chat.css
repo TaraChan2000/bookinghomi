@@ -636,3 +636,11 @@ html {
 .btn-send-message i{
     font-size: 30px;
 }
+
+#menu i{
+    color: #000;
+}
+
+#menu .logo-menu{
+    width: 100px;
+}

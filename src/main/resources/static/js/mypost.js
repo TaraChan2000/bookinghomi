@@ -3,7 +3,7 @@ async function loadRoomThanhCong() {
     var listRoom;
 
     // tin thành công
-    const res = await fetch('http://'+urlFirst+':8080/api/user/roomOfMyProfile', {
+    const res = await fetch('http://'+urlFirst+'/api/user/roomOfMyProfile', {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Bearer ' + token
@@ -12,13 +12,13 @@ async function loadRoomThanhCong() {
     listRoom = await res.json();
     var main = '';
     for (i = 0; i < listRoom.length; i++) {
-        const resp = await fetch('http://'+urlFirst+':8080/api/public/imageByRoom?id=' + listRoom[i].id, { method: 'GET' })
-        var image = await resp.json();
-        var links;
-        for (j = 0; j < image.length; j++) {
-            links = image[0].link
-            break
-        }
+        // const resp = await fetch('http://'+urlFirst+'/api/public/imageByRoom?id=' + listRoom[i].id, { method: 'GET' })
+        // var image = await resp.json();
+        var links = listRoom[i].banner;
+        // for (j = 0; j < image.length; j++) {
+        //     links = image[0].link
+        //     break
+        // }
         main += '<div class="col-md-12 signle-room-search">' +
             '<div class="row">' +
             '<div class="col-md-3">' +
@@ -26,13 +26,13 @@ async function loadRoomThanhCong() {
             '</div>' +
             '<div class="col-md-7 detail-search">' +
             '<h5><a href="detail?id=' + listRoom[i].id + '">' + listRoom[i].title + '</a></h5>' +
-            '<p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: ' + listRoom[i].address.name + ',' + listRoom[i].address.town.name + ',' + listRoom[i].address.town.province.name + '</p>' +
-            '<p>Đường: ' + listRoom[i].detailAddress + '</p>' +
-            '<p>Giá: ' + listRoom[i].price + 'đ/tháng</p>' +
+            '<p>Address<i class="fa fa-map-marker iconmap"></i>: ' + listRoom[i].address.name + ',' + listRoom[i].address.town.name + ',' + listRoom[i].address.town.province.name + '</p>' +
+            '<p>Street: ' + listRoom[i].detailAddress + '</p>' +
+            '<p>Price: ' + listRoom[i].price + 'đ/Pernight</p>' +
             '</div>' +
             '<div class="col-md-2 connect">' +
-            '<button onclick="deleteOrRestore(' + listRoom[i].id + ')" class="btn btn-outline-danger btn-mypost"><i class="fa fa-trash"></i>Xóa tin</button>' +
-            '<button class="btn btn-warning btn-mypost"><i class="fa fa-edit"></i><a style="color:#fff" href="updateRoom?id='+listRoom[i].id+'">sửa tin</a></button>' +
+            '<button onclick="deleteOrRestore(' + listRoom[i].id + ')" class="btn btn-outline-danger btn-mypost"><i class="fa fa-trash"></i>Delete</button>' +
+            '<button class="btn btn-warning btn-mypost"><i class="fa fa-edit"></i><a style="color:#fff" href="updateRoom?id='+listRoom[i].id+'">Update</a></button>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -46,7 +46,7 @@ async function loadRoomChuaDuyet() {
     var listRoom;
 
     // tin chưa duyệt
-    const res = await fetch('http://'+urlFirst+':8080/api/user/roomNotActiveOfMyProfile', {
+    const res = await fetch('http://'+urlFirst+'/api/user/roomNotActiveOfMyProfile', {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Bearer ' + token
@@ -55,13 +55,13 @@ async function loadRoomChuaDuyet() {
     listRoom = await res.json();
     var main = '';
     for (i = 0; i < listRoom.length; i++) {
-        const resp = await fetch('http://'+urlFirst+':8080/api/public/imageByRoom?id=' + listRoom[i].id, { method: 'GET' })
-        var image = await resp.json();
-        var links;
-        for (j = 0; j < image.length; j++) {
-            links = image[0].link
-            break
-        }
+        // const resp = await fetch('http://'+urlFirst+'/api/public/imageByRoom?id=' + listRoom[i].id, { method: 'GET' })
+        // var image = await resp.json();
+        var links = listRoom[i].banner;;
+        // for (j = 0; j < image.length; j++) {
+        //     links = image[0].link
+        //     break
+        // }
         main += '<div class="col-md-12 signle-room-search">' +
             '<div class="row">' +
             '<div class="col-md-3">' +
@@ -69,12 +69,12 @@ async function loadRoomChuaDuyet() {
             '</div>' +
             '<div class="col-md-7 detail-search">' +
             '<h5><a href="detail?id=' + listRoom[i].id + '">' + listRoom[i].title + '</a></h5>' +
-            '<p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: ' + listRoom[i].address.name + ',' + listRoom[i].address.town.name + ',' + listRoom[i].address.town.province.name + '</p>' +
-            '<p>Đường: ' + listRoom[i].detailAddress + '</p>' +
-            '<p>Giá: ' + listRoom[i].price + 'đ/tháng</p>' +
+            '<p>Address<i class="fa fa-map-marker iconmap"></i>: ' + listRoom[i].address.name + ',' + listRoom[i].address.town.name + ',' + listRoom[i].address.town.province.name + '</p>' +
+            '<p>Street: ' + listRoom[i].detailAddress + '</p>' +
+            '<p>Price: ' + listRoom[i].price + 'đ/Pernight</p>' +
             '</div>' +
             '<div class="col-md-2 connect">' +
-            '<button class="btn btn-warning btn-mypost"><i class="fa fa-edit"></i><a style="color:#fff" href="updateRoom?id='+listRoom[i].id+'">sửa tin</a></button>' +
+            '<button class="btn btn-warning btn-mypost"><i class="fa fa-edit"></i><a style="color:#fff" href="updateRoom?id='+listRoom[i].id+'">Update</a></button>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -87,7 +87,7 @@ async function loadRoomDaXoa() {
     var listRoom;
 
     // tin đã xóa
-    const res = await fetch('http://'+urlFirst+':8080/api/user/roomDeletedOfMyProfile', {
+    const res = await fetch('http://'+urlFirst+'/api/user/roomDeletedOfMyProfile', {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Bearer ' + token
@@ -96,13 +96,13 @@ async function loadRoomDaXoa() {
     listRoom = await res.json();
     var main = '';
     for (i = 0; i < listRoom.length; i++) {
-        const resp = await fetch('http://'+urlFirst+':8080/api/public/imageByRoom?id=' + listRoom[i].id, { method: 'GET' })
-        var image = await resp.json();
-        var links;
-        for (j = 0; j < image.length; j++) {
-            links = image[0].link
-            break
-        }
+        // const resp = await fetch('http://'+urlFirst+'/api/public/imageByRoom?id=' + listRoom[i].id, { method: 'GET' })
+        // var image = await resp.json();
+        var links = listRoom[i].banner;
+        // for (j = 0; j < image.length; j++) {
+        //     links = image[0].link
+        //     break
+        // }
         main += '<div class="col-md-12 signle-room-search">' +
             '<div class="row">' +
             '<div class="col-md-3">' +
@@ -110,13 +110,13 @@ async function loadRoomDaXoa() {
             '</div>' +
             '<div class="col-md-7 detail-search">' +
             '<h5><a href="detail?id=' + listRoom[i].id + '">' + listRoom[i].title + '</a></h5>' +
-            '<p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: ' + listRoom[i].address.name + ',' + listRoom[i].address.town.name + ',' + listRoom[i].address.town.province.name + '</p>' +
-            '<p>Đường: ' + listRoom[i].detailAddress + '</p>' +
-            '<p>Giá: ' + listRoom[i].price + 'đ/tháng</p>' +
+            '<p>Address<i class="fa fa-map-marker iconmap"></i>: ' + listRoom[i].address.name + ',' + listRoom[i].address.town.name + ',' + listRoom[i].address.town.province.name + '</p>' +
+            '<p>Street: ' + listRoom[i].detailAddress + '</p>' +
+            '<p>Price: ' + listRoom[i].price + 'đ/Pernight</p>' +
             '</div>' +
             '<div class="col-md-2 connect">' +
-            '<button onclick="deleteOrRestore(' + listRoom[i].id + ')" class="btn btn-outline-danger btn-mypost"><i class="fa fa-trash"></i>Khôi phục</button>' +
-            '<button class="btn btn-warning btn-mypost"><i class="fa fa-edit"></i><a style="color:#fff" href="updateRoom?id='+listRoom[i].id+'">sửa tin</a></button>' +
+            '<button onclick="deleteOrRestore(' + listRoom[i].id + ')" class="btn btn-outline-danger btn-mypost"><i class="fa fa-trash"></i>Restore</button>' +
+            '<button class="btn btn-warning btn-mypost"><i class="fa fa-edit"></i><a style="color:#fff" href="updateRoom?id='+listRoom[i].id+'">Update</a></button>' +
             '</div>' +
             '</div>' +
             '</div>'
@@ -127,7 +127,7 @@ async function loadRoomDaXoa() {
 async function deleteOrRestore(id) {
     var token = localStorage.getItem("token");
 
-    const res = await fetch('http://'+urlFirst+':8080/api/user/deleteOrRestore?id=' + id, {
+    const res = await fetch('http://'+urlFirst+'/api/user/deleteOrRestore?id=' + id, {
         method: 'POST',
         headers: new Headers({
             'Authorization': 'Bearer ' + token
@@ -138,7 +138,7 @@ async function deleteOrRestore(id) {
 
 async function loadUser() {
     var token = localStorage.getItem("token");
-    var urlAccount = 'http://'+urlFirst+':8080/api/userlogged';
+    var urlAccount = 'http://'+urlFirst+'/api/userlogged';
     const res = await fetch(urlAccount, {
         method: 'POST',
         headers: new Headers({
@@ -149,12 +149,11 @@ async function loadUser() {
     var account = await res.json();
     document.getElementById("infor-name").innerHTML = account.username
     document.getElementById("avatar-profile-post").src = account.avatar
-    document.getElementById("soduhientai").innerHTML = account.money + '.đ'
 }
 
 async function loadCountRoom() {
     var token = localStorage.getItem("token");
-    var urlAccount = 'http://'+urlFirst+':8080/api/user/countRoomProfile';
+    var urlAccount = 'http://'+urlFirst+'/api/user/countRoomProfile';
     const res = await fetch(urlAccount, {
         method: 'GET',
         headers: new Headers({
@@ -168,7 +167,7 @@ async function loadCountRoom() {
 }
 
 async function loadPayLevel() {
-    var url = 'http://'+urlFirst+':8080/api/public/paylevel';
+    var url = 'http://'+urlFirst+'/api/public/paylevel';
     const res = await fetch(url, {
         method: 'GET',
         headers: new Headers({
@@ -184,7 +183,7 @@ async function loadPayLevel() {
         else {
             checks = ''
         }
-        main += '<label class="containerfull">' + paylevel[i].amount + ' <img src="image/naptiennull.png" class="naptiennull">' +
+        main += '<label class="containerfull">' + paylevel[i].amount + ' <img src="../images/naptiennull.png" class="naptiennull">' +
             '<input value="' + paylevel[i].amount + '" type="radio" ' + checks + ' name="money">' +
             '<span class="checkmarks"></span>' +
             '</label>'
@@ -193,13 +192,14 @@ async function loadPayLevel() {
     document.getElementById("listPaylevel").innerHTML = main
 }
 
+
 async function initPayment() {
     // var currentUrl = document.URL
-    var currentUrl = 'http://'+urlFirst+':8080/returnPaymentUrl'
+    var currentUrl = 'http://'+urlFirst+'/returnPaymentUrl'
     var amount = document.querySelector('input[name="money"]:checked').value;
     if (window.confirm('Bạn muốn nạp mức tiền này?')) {
         var token = localStorage.getItem("token");
-        var url = 'http://'+urlFirst+':8080/api/user/urlpayment';
+        var url = 'http://'+urlFirst+'/api/user/urlpayment';
         var payment = {
             "amount":amount,
             "content":"nạp tiền vào tài khoản",
@@ -218,4 +218,66 @@ async function initPayment() {
         window.open(urlReturn.url, '_blank');
     }
    
+}
+
+async function dangtheodoi() {
+    var id = window.location.search.split('=')[1];
+    var token = localStorage.getItem("token");
+    var theodois;
+    var duoctheodois;
+    if (id == null) {
+        const res = await fetch('http://'+urlFirst+'/api/user/followMe', {
+            method: 'GET',
+            headers: new Headers({
+                'Authorization': 'Bearer ' + token
+            })
+        })
+        const resp = await fetch('http://'+urlFirst+'/api/user/followOfMe', {
+            method: 'GET',
+            headers: new Headers({
+                'Authorization': 'Bearer ' + token
+            })
+        })
+
+        duoctheodois = await res.json();
+        theodois = await resp.json();
+    }
+    else{
+        const res = await fetch('http://'+urlFirst+'/api/public/followOfAnotherPeople?id='+id, {
+            method: 'GET',
+            headers: new Headers({
+            })
+        })
+        const resp = await fetch('http://'+urlFirst+'/api/public/followOfAnother?id='+id, {
+            method: 'GET',
+            headers: new Headers({
+            })
+        })
+
+        duoctheodois = await res.json();
+        theodois = await resp.json();
+    }
+    document.getElementById("duoctheodois").innerHTML = 'Có '+duoctheodois.length+' người theo dõi'
+    document.getElementById("theodois").innerHTML = 'Đang theo dõi '+theodois.length+' người'
+
+    var tdoi = '';
+    var dtheodoi = '';
+    for(i=0; i<theodois.length; i++){
+        tdoi += '<li>'+
+            '<div>'+
+            '<div class="div_img_theodoi"><img src="'+theodois[i].me.avatar+'" class="img_theodoi"></div>'+
+            '<p class="username_theodoi"><a href="profile?id='+theodois[i].me.id+'">'+theodois[i].me.username+'</a></p>'+
+            '</div>'+
+            '</li>'
+    }
+    for(i=0; i<duoctheodois.length; i++){
+        dtheodoi += '<li>'+
+            '<div>'+
+            '<div class="div_img_theodoi"><img src="'+duoctheodois[i].followers.avatar+'" class="img_theodoi"></div>'+
+            '<p class="username_theodoi"><a href="profile?id='+duoctheodois[i].followers.id+'">'+duoctheodois[i].followers.username+'</a></p>'+
+            '</div>'+
+            '</li>'
+    }
+    document.getElementById("ul_theodoi_profile").innerHTML = tdoi
+    document.getElementById("ul_duoctheodoi_profile").innerHTML = dtheodoi
 }

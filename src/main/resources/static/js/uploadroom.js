@@ -3,7 +3,7 @@ function loadInit() {
     $('input#choosefile').change(function () {
         var files = $(this)[0].files;
         if (files.length + listFile.length < 3) {
-            alert("hãy chọn ít nhất 3 ảnh ");
+            alert("Please select 3 or more photos");
         }
     });
     document.querySelector('#choosefile').addEventListener("change", previewImages);
@@ -56,10 +56,8 @@ function loadInit() {
 
 }
 
-
-
 async function findAllUtilities() {
-    var url = 'http://'+urlFirst+':8080/api/public/utilities';
+    var url = 'http://'+urlFirst+'/api/public/utilities';
     const response = await fetch(url, {
         method: 'GET',
         headers: new Headers({
@@ -68,7 +66,7 @@ async function findAllUtilities() {
     });
     var listutility = await response.json();
     var main = '<div class="col-md-12">' +
-        '<h5 class="title-tienich">Tiện ích</h5>' +
+        '<h5 class="title-tienich">Utilities</h5>' +
         '</div>';
     for (i = 0; i < listutility.length; i++) {
         main += '<div class="col-md-3">' +
@@ -82,7 +80,7 @@ async function findAllUtilities() {
 }
 
 async function findAllTypeRoom() {
-    var url = 'http://'+urlFirst+':8080/api/public/typeRooms';
+    var url = 'http://'+urlFirst+'/api/public/typeRooms';
     const response = await fetch(url, {
         method: 'GET',
         headers: new Headers({
@@ -98,7 +96,7 @@ async function findAllTypeRoom() {
 }
 
 async function loadAddress() {
-    var urladd = 'http://'+urlFirst+':8080/api/public/province';
+    var urladd = 'http://'+urlFirst+'/api/public/province';
     const response = await fetch(urladd, {
         method: 'GET',
         headers: new Headers({
@@ -106,59 +104,21 @@ async function loadAddress() {
         })
     });
     var province = await response.json();
-
     var tinh = document.getElementById("tinh");
-    var huyen = document.getElementById("huyen");
-    var xa = document.getElementById("xa");
-
+    tinh.innerHTML = ''
     for (i = 0; i < province.length; i++) {
         var option = document.createElement("option");
         option.text = province[i].name;
-        option.value = i;
+        option.value = province[i].id;
         tinh.add(option);
     }
-
-    tinh.onchange = function () {
-        huyen.innerHTML = '';
-        for (i = 0; i < province.length; i++) {
-            if (Number(i) === Number(tinh.value)) {
-                for (j = 0; j < province[i].towns.length; j++) {
-                    var option = document.createElement("option");
-                    option.text = province[i].towns[j].name;
-                    option.value = j;
-                    huyen.add(option);
-                }
-            }
-        }
-    }
-
-    huyen.onchange = function () {
-        xa.innerHTML = '';
-        for (i = 0; i < province.length; i++) {
-            if (Number(i) === Number(tinh.value)) {
-                for (j = 0; j < province[i].towns.length; j++) {
-                    if (Number(j) === Number(huyen.value)) {
-                        for (k = 0; k < province[i].towns[j].villages.length; k++) {
-                            var option = document.createElement("option");
-                            option.text = province[i].towns[j].villages[k].name;
-                            option.value = province[i].towns[j].villages[k].id;
-                            xa.add(option);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }
 
-
-
 async function uploadImage() {
-    alert(listFile.length)
+    // alert(listFile.length)
     const listLink = []
 
-    var urlUpload = 'http://'+urlFirst+':8080/api/public/upload';
+    var urlUpload = 'http://'+urlFirst+'/api/public/upload';
     for (i = 0; i < listFile.length; i++) {
         const formData = new FormData()
         formData.append("file", listFile[i]);
@@ -178,12 +138,11 @@ async function uploadImage() {
     }
 }
 
-
 async function uploadRoom() {
 
     var token = localStorage.getItem("token");
 
-    var urlAccount = 'http://'+urlFirst+':8080/api/userlogged';
+    var urlAccount = 'http://'+urlFirst+'/api/userlogged';
     const response = await fetch(urlAccount, {
         method: 'POST',
         headers: new Headers({
@@ -192,14 +151,10 @@ async function uploadRoom() {
         })
     });
     var account = await response.json();
-    if(account.numOfFree == 0 && account.money < 5000){
-        alert("số lượt miễn phí đã hết, hãy nạp thêm tiền")
-        return
-    }
 
     document.getElementById("loading_uploadroom").style.width = '30%'
     const listLink = []
-    var urlUpload = 'http://'+urlFirst+':8080/api/public/upload';
+    var urlUpload = 'http://'+urlFirst+'/api/public/upload';
     for (i = 0; i < listFile.length; i++) {
         const formData = new FormData()
         formData.append("file", listFile[i]);
@@ -241,27 +196,57 @@ async function uploadRoom() {
     var gioitinh = gioitinhs
     var dientich = document.getElementById("dientich").value
     var giathue = document.getElementById("giathue").value
-    var datcoc = document.getElementById("datcoc").value
-    var tiendien = document.getElementById("tiendien").value
-    var tiennuoc = document.getElementById("tiennuoc").value
-    var wifi = document.getElementById("wifi").value
     var tenduong = document.getElementById("tenduong").value
+    var slphong = document.getElementById("slphong").value
     var tieude = document.getElementById("tieude").value
-    var mota = document.getElementById("mota").value
+    var mota = tinyMCE.get('editor').getContent()
     var xa = document.getElementById("xa").value
-
+    if(tieude === "" || dientich === "" || succhua === "" || giathue === ""){
+        alert("Data can't be left blank!")
+        return;
+    }
+    if(tieude === "" ){
+        alert("Title can't be left blank")
+        return;
+    }
+    if(dientich === "" ){
+        alert("Area can't be left blank")
+        return;
+    }
+    if(succhua === "" ){
+        alert("Capacity can't be left blank")
+        return;
+    }
+    if(giathue === "" ){
+        alert("Price can't be left blank")
+        return;
+    }
+    if(slphong === "" ){
+        alert("Quantity room can't be left blank")
+        return;
+    }
+    if(succhua < 0 ){
+        alert("Capacity is invalid!")
+        return;
+    }
+    if(dientich < 0 ){
+        alert("Area is invalid!")
+        return;
+    }
+    if(giathue < 0 ){
+        alert("Price is invalid!")
+        return;
+    }
     var room = {
         "title": tieude,
         "price": giathue,
         "sex": gioitinh,
         "quantity": succhua,
-        "deposit": datcoc,
         "area": dientich,
         "description": mota,
-        "electricity": tiendien,
-        "water": tiennuoc,
-        "wifi": wifi,
+        "quantityRoom": slphong,
         "deleted": 0,
+        "banner":listLink[0],
         "roomStatus": {
             "id": 1
         },
@@ -275,7 +260,7 @@ async function uploadRoom() {
         "utilities": listUtilities
     }
 
-    const res = await fetch('http://'+urlFirst+':8080/api/user/rooms', {
+    const res = await fetch('http://'+urlFirst+'/api/user/rooms', {
         method: 'POST',
         headers: new Headers({
             'Authorization': 'Bearer ' + token,
@@ -293,7 +278,7 @@ async function uploadRoom() {
                     "id": roomResult.id
                 }
             }
-            const resp = await fetch('http://'+urlFirst+':8080/api/user/roomImage', {
+            const resp = await fetch('http://'+urlFirst+'/api/user/roomImage', {
                 method: 'POST',
                 headers: new Headers({
                     'Authorization': 'Bearer ' + token,
@@ -303,11 +288,12 @@ async function uploadRoom() {
             })
         }
 
-        alert("upload phòng thành công! đang đợi admin duyệt")
+        alert("upload success! waiting  admin confirm")
+        window.location.replace("myPost")
     }
 
     else if (res.status >= 300) {
-        alert("đăng phòng thất bại")
+        alert("upload room error")
     }
 
     document.getElementById("loading_uploadroom").style.width = '0%'

@@ -1,4 +1,3 @@
-const urlFirst = '192.168.47.105:81/';
 function loadMenu(){
     var authen = '';
     var account = '';
@@ -21,7 +20,7 @@ function loadMenu(){
         '<img src="http://res.cloudinary.com/dxccmy7an/image/upload/v1668216522/r6zn7cfbloerjau5t2e0.png" class="logo-header">'+
         '</div>'+
         '<div class="col-md-2">'+
-        '<a style="font-size: 15px;" id="link" class="nav-link" href="index.html"><i class="fa fa-home"></i> Trang chủ</a>'+
+        '<a style="font-size: 15px;" id="link" class="nav-link" href="admin.html"><i class="fa fa-home"></i> Trang chủ</a>'+
         '</div>'+
         '<div class="col-md-2">'+
         '<a style="font-size: 15px;" id="link" class="nav-link" href="PostARoomSearch.html"><i class="fa fa-newspaper"></i> Quản lý tin</a>'+

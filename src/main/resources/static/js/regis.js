@@ -1,45 +1,56 @@
+function isEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+function isPhone(number) {
+    return /(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(number);
+}
 async function regis() {
 
-    //loading
-    document.getElementById("img_loading").style.width = '50%';
+    var linkimage = 'https://e7.pngegg.com/pngimages/178/595/png-clipart-user-profile-computer-icons-login-user-avatars-monochrome-black.png';
 
-    //upload image
-    var uploadimg = 'http://'+urlFirst+':8080/api/public/upload';
-    const filePath = document.getElementById('file')
-    const formData = new FormData()
-    formData.append("file", filePath.files[0])
-    const response = await fetch(uploadimg, {
-        method: 'POST',
-        headers: new Headers({
-
-        }),
-        body: formData
-    });
-    var linkimage = await response.text();
-
-
-
-    var url = 'http://'+urlFirst+':8080/api/register'
+    var url = 'http://'+urlFirst+'/api/register'
     var username = document.getElementById("username").value
-    var firstName = document.getElementById("first").value
-    var lastName = document.getElementById("last").value
     var email = document.getElementById("email").value
     var phone = document.getElementById("phone").value
     var langKey = 'en'
     var password = document.getElementById("password").value
-    var village = document.getElementById("xa").value
+
+    if(password === "" && email === "" && username === ""){
+        alert("Data cannot be left blank")
+        return;
+    }
+    if(username === "" ){
+        alert("Username can't be left blank")
+        return;
+    }
+    if(email === "" ){
+        alert("Email can't be left blank")
+        return;
+    }
+    if(password === "" ){
+        alert("Password can't be left blank")
+        return;
+    }
+    if(!isEmail(email)) {
+    alert('Erroneous email format!');
+        return;
+    }
+    if(!isPhone(phone)) {
+        alert('Erroneous phone format!');
+        return;
+    }
+    if(password.length < 6 ){
+        alert("Password must include at least 5 characters!")
+        return;
+    }
     var user = {
         "username": username,
-        "firstName": firstName,
-        "lastName": lastName,
         "email": email,
         "phone": phone,
         "langKey": langKey,
         "avatar": linkimage,
         "password": password,
-        "village": {
-            "id": village
-        },
         "authorities": [
             "ROLE_USER"
         ]
@@ -54,14 +65,19 @@ async function regis() {
     var result = await res.text();
     console.log(result)
     if (result === '1') {
-        alert("email đã tồn tại")
+        alert("email already exist")
     }
     else if (result === '2') {
-        alert("username đã tồn tại")
+        alert("username already exist")
     }
     else if (result === '0') {
-        alert("đăng ký thành công! hãy check email của bạn")
-        window.location.replace("keyactive")
+        swal({
+                title: "Notification",
+                text: "Register account successful!",
+                type: "success"
+            },
+            function(){
+                window.location.replace('login')
+            });
     }
-    document.getElementById("img_loading").style.width = '0%';
 }

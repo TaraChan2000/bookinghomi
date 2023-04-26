@@ -1,12 +1,3 @@
-body{
-    background-color: #F6F5F2;
-}
-.top-header{
-    background-color: #ffba00;
-    height: 40px;
-    /* position: fixed; */
-    /* z-index: 99; */
-}
 
 #downapp{
     display: inline;
@@ -25,54 +16,6 @@ body{
     font-weight: bold;
 }
 
-#menu{
-    /* margin-top: 16px; */
-    /* padding-top: 0px; */
-    /* position: fixed; */
-    /* z-index: 99; */
-    min-height: 80px;
-    width: 100%;
-}
-
-#header{
-    min-height: 80px;
-    width: 100%;
-    background-color: #FFBA00;
-}
-
-.logo-header{
-    width: 120px;
-    margin-top: 10px;
-}
-
-.list-header a{
-    text-align: center;
-    margin-top: 10px;
-    color: #222222 !important;
-}
-
-.list-header li{
-    color: #222222 !important;
-}
-
-.search-header{
-    background-color: #fff;
-    height: 38px;
-    border-radius: 5px;
-}
-
-.header-bottom{
-    margin-top: 5px;
-    padding-bottom: 15px;
-}
-
-#input-search-header{
-    border: none;
-}
-
-.nav-link{
-    font-size: 10px;
-}
 
 #input-search-header:focus{
     outline-width: 0;
@@ -81,12 +24,10 @@ body{
 
 #search-header-icon{
     color: #FFBA00;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 6px;
     float: right;
     margin-right: 20px;
-    cursor: pointer;
-    text-align: center;
 }
 
 .header-login a{
@@ -200,7 +141,6 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 12px;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);*/
 }
 
 .caugiay{
@@ -209,7 +149,6 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 12px;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);*/
 }
 
 .dongda{
@@ -218,7 +157,6 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 12px;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);*/
 }
 
 .namtuliem{
@@ -227,7 +165,6 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 12px;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);*/
 }
 
 .bactuliem{
@@ -236,7 +173,6 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 12px;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);*/
 }
 
 .hoangmai{
@@ -245,7 +181,6 @@ body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 12px;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 8%);*/
 }
 
 .loc-name{
@@ -260,7 +195,6 @@ body{
 
 .list-room{
     background-color: #fff;
-    /*box-shadow: 0 4px 12px 0 rgb(0 0 0 8%);*/
     border-radius: 15px;
     margin-top: 50px;
     margin-left: 1rem;
@@ -540,7 +474,7 @@ body{
 
 .infor-user{
     background-color: #fff;
-    min-height: 170px;
+    height: 170px;
     border-radius: 15px;
     margin-left: -10px;
     margin-top: 10px;
@@ -661,9 +595,13 @@ body{
     height: 130px;
 }
 
+.detail-search h5{
+    margin-bottom: 10px;
+}
+
 .detail-search p{
-    line-height: 2px;
-    font-size: 12px;
+    line-height: 12px;
+    font-size: 16px;
 }
 
 .connect p{
@@ -909,8 +847,8 @@ body{
 }
 
 .avatar-profile{
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
@@ -1020,6 +958,7 @@ body{
     line-height: 18px;
     color: gray;
     padding-bottom: 10px;
+    text-decoration: none;
 }
 
 
@@ -1240,7 +1179,7 @@ body{
 
 #image-chat{
     margin: auto;
-    padding: auto;
+    /*padding: auto;*/
     width: 100%;
     height: auto;
 }
@@ -1449,9 +1388,11 @@ body{
 }
 
 .btn-logout{
-    background-color: none; border: none;
+    /*background-color: none; border: none;*/
 }
-
+.tox-notifications-container{
+    display: none;
+}
 .theodoi{
     display: inline;
     cursor: pointer;
@@ -1504,6 +1445,7 @@ body{
     min-height: 300px;
     border-radius: 30px;
     padding: 0px;
+    border: 2px solid #d4d4d4;
 }
 
 .main-search{
@@ -1515,13 +1457,14 @@ body{
 .title-boloc{
     margin-top: 30px;
     margin-left: 30px;
+    display: flex;
 }
 .title-boloc h3{
-    display: inline;
+    /*display: inline;*/
 }
 
 .title-boloc button{
-    margin-left: 30px;
+    /*margin-left: 50px;*/
     border: 1px solid #4877F8;
     border-radius: 16px;
     height: 32px;
@@ -1533,8 +1476,11 @@ body{
     min-height: 500px;
     background-color: #F6F7F9;
     margin-top: 30px;
-    padding-left: 30px;
+    padding-left: 50px;
     padding-top: 30px;
+}
+.list-filter select{
+    width: 90%;
 }
 
 .apdung-duoi{
@@ -1608,20 +1554,3 @@ body{
 .image-upload{
     margin-top: 5px;
 }
-
-.btn-search-form{
-    background-color: #fff;
-    border: none;
-    margin-left: 15px;
-    height: 100%;
-}
-
-.nhanchonguoidang a{
-    color: #fff;
-}
-
-.nhanchonguoidang button{
-    margin-top: 20px;
-    width: 100%;
-}
-

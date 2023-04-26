@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.vnua.hieu.entity</OriginalElement>
+  <nodes>
+    <node x="278.47610294117646" y="1616.0">com.vnua.hieu.entity.RoomImage</node>
+    <node x="398.5" y="636.0">com.vnua.hieu.entity.RoomStatus</node>
+    <node x="762.75" y="1180.0">com.vnua.hieu.entity.HistorySearch</node>
+    <node x="952.75" y="1158.0">com.vnua.hieu.entity.Chatting</node>
+    <node x="255.84926470588238" y="322.0">com.vnua.hieu.entity.Village</node>
+    <node x="238.84926470588238" y="0.0">com.vnua.hieu.entity.Province</node>
+    <node x="204.5" y="625.0">com.vnua.hieu.entity.TypeRoom</node>
+    <node x="10.5" y="614.0">com.vnua.hieu.entity.Utilities</node>
+    <node x="249.47610294117646" y="982.0">com.vnua.hieu.entity.Room</node>
+    <node x="634.7261029411765" y="1594.0">com.vnua.hieu.entity.FeedBack</node>
+    <node x="619.75" y="1202.0">com.vnua.hieu.entity.Follow</node>
+    <node x="1146.75" y="1169.0">com.vnua.hieu.entity.HistoryPay</node>
+    <node x="1152.75" y="625.0">com.vnua.hieu.entity.PayLevel</node>
+    <node x="232.34926470588238" y="150.0">com.vnua.hieu.entity.Town</node>
+    <node x="756.0992647058824" y="344.0">com.vnua.hieu.entity.Authority</node>
+    <node x="717.5992647058824" y="504.0">com.vnua.hieu.entity.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.Village" relationship="TO_ONE">
+      <point x="48.0" y="-270.0" />
+      <point x="393.47610294117646" y="960.0" />
+      <point x="412.6341911764706" y="960.0" />
+      <point x="412.6341911764706" y="910.0" />
+      <point x="672.1911764705883" y="910.0" />
+      <point x="672.1911764705883" y="443.0" />
+      <point x="340.59926470588243" y="443.0" />
+      <point x="28.25" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Follow" target="com.vnua.hieu.entity.User" relationship="TO_ONE">
+      <point x="-30.75" y="-50.0" />
+      <point x="650.5" y="960.0" />
+      <point x="781.2242647058824" y="960.0" />
+      <point x="781.2242647058824" y="910.0" />
+      <point x="765.0992647058824" y="910.0" />
+      <point x="-47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.RoomStatus" relationship="TO_ONE">
+      <point x="48.0" y="-270.0" />
+      <point x="393.47610294117646" y="960.0" />
+      <point x="412.6341911764706" y="960.0" />
+      <point x="412.6341911764706" y="910.0" />
+      <point x="505.0" y="910.0" />
+      <point x="35.5" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Province" target="com.vnua.hieu.entity.Town" relationship="DEPENDENCY">
+      <point x="36.75" y="50.0" />
+      <point x="349.0992647058824" y="125.0" />
+      <point x="352.3492647058824" y="125.0" />
+      <point x="40.0" y="-61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Town" target="com.vnua.hieu.entity.Province" relationship="DEPENDENCY">
+      <point x="40.0" y="-61.0" />
+      <point x="352.3492647058824" y="125.0" />
+      <point x="349.0992647058824" y="125.0" />
+      <point x="36.75" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.HistoryPay" target="com.vnua.hieu.entity.PayLevel" relationship="DEPENDENCY">
+      <point x="38.5" y="-83.0" />
+      <point x="1262.25" y="960.0" />
+      <point x="1228.75" y="960.0" />
+      <point x="1228.75" y="950.0" />
+      <point x="1259.25" y="950.0" />
+      <point x="35.5" y="61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.User" target="com.vnua.hieu.entity.Village" relationship="DEPENDENCY">
+      <point x="-47.5" y="-182.0" />
+      <point x="765.0992647058824" y="483.0" />
+      <point x="807.5992647058824" y="483.0" />
+      <point x="807.5992647058824" y="473.0" />
+      <point x="0.0" y="473.0" />
+      <point x="0.0" y="463.0" />
+      <point x="284.0992647058824" y="463.0" />
+      <point x="-28.25" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.TypeRoom" relationship="TO_ONE">
+      <point x="48.0" y="-270.0" />
+      <point x="393.47610294117646" y="960.0" />
+      <point x="412.6341911764706" y="960.0" />
+      <point x="412.6341911764706" y="910.0" />
+      <point x="335.0" y="910.0" />
+      <point x="43.5" y="61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Town" target="com.vnua.hieu.entity.Village" relationship="TO_MANY">
+      <point x="40.0" y="61.0" />
+      <point x="352.3492647058824" y="297.0" />
+      <point x="340.5992647058824" y="297.0" />
+      <point x="28.25" y="-50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Chatting" target="com.vnua.hieu.entity.User" relationship="DEPENDENCY">
+      <point x="43.5" y="-94.0" />
+      <point x="1083.25" y="950.0" />
+      <point x="874.6341911764706" y="950.0" />
+      <point x="874.6341911764706" y="890.0" />
+      <point x="860.0992647058824" y="890.0" />
+      <point x="47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Village" target="com.vnua.hieu.entity.Town" relationship="TO_ONE">
+      <point x="28.25" y="-50.0" />
+      <point x="340.5992647058824" y="297.0" />
+      <point x="352.3492647058824" y="297.0" />
+      <point x="40.0" y="61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Follow" target="com.vnua.hieu.entity.User" relationship="DEPENDENCY">
+      <point x="30.75" y="-50.0" />
+      <point x="712.0" y="950.0" />
+      <point x="874.6341911764706" y="950.0" />
+      <point x="874.6341911764706" y="890.0" />
+      <point x="860.0992647058824" y="890.0" />
+      <point x="47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.HistoryPay" target="com.vnua.hieu.entity.User" relationship="DEPENDENCY">
+      <point x="38.5" y="-83.0" />
+      <point x="1262.25" y="960.0" />
+      <point x="1228.75" y="960.0" />
+      <point x="1228.75" y="900.0" />
+      <point x="874.6341911764706" y="900.0" />
+      <point x="874.6341911764706" y="890.0" />
+      <point x="860.0992647058824" y="890.0" />
+      <point x="47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.User" relationship="TO_ONE">
+      <point x="48.0" y="-270.0" />
+      <point x="393.47610294117646" y="960.0" />
+      <point x="412.6341911764706" y="960.0" />
+      <point x="412.6341911764706" y="930.0" />
+      <point x="781.2242647058824" y="930.0" />
+      <point x="781.2242647058824" y="910.0" />
+      <point x="765.0992647058824" y="910.0" />
+      <point x="-47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Village" target="com.vnua.hieu.entity.Town" relationship="DEPENDENCY">
+      <point x="-28.25" y="-50.0" />
+      <point x="284.0992647058824" y="297.0" />
+      <point x="272.3492647058824" y="297.0" />
+      <point x="-40.0" y="61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Town" target="com.vnua.hieu.entity.Village" relationship="DEPENDENCY">
+      <point x="-40.0" y="61.0" />
+      <point x="272.3492647058824" y="297.0" />
+      <point x="284.0992647058824" y="297.0" />
+      <point x="-28.25" y="-50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.FeedBack" target="com.vnua.hieu.entity.User" relationship="TO_ONE">
+      <point x="-43.5" y="-72.0" />
+      <point x="678.2261029411765" y="1573.0" />
+      <point x="471.1341911764706" y="1573.0" />
+      <point x="471.1341911764706" y="960.0" />
+      <point x="781.2242647058824" y="960.0" />
+      <point x="781.2242647058824" y="910.0" />
+      <point x="765.0992647058824" y="910.0" />
+      <point x="-47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.RoomImage" target="com.vnua.hieu.entity.Room" relationship="DEPENDENCY">
+      <point x="33.5" y="-50.0" />
+      <point x="378.97610294117646" y="1573.0" />
+      <point x="350.47610294117646" y="1573.0" />
+      <point x="350.47610294117646" y="1543.0" />
+      <point x="393.47610294117646" y="1543.0" />
+      <point x="48.0" y="270.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.HistoryPay" target="com.vnua.hieu.entity.PayLevel" relationship="TO_ONE">
+      <point x="-38.5" y="-83.0" />
+      <point x="1185.25" y="960.0" />
+      <point x="1218.75" y="960.0" />
+      <point x="1218.75" y="910.0" />
+      <point x="1188.25" y="910.0" />
+      <point x="-35.5" y="61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.Village" relationship="DEPENDENCY">
+      <point x="-48.0" y="-270.0" />
+      <point x="297.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="920.0" />
+      <point x="0.0" y="920.0" />
+      <point x="0.0" y="463.0" />
+      <point x="284.0992647058824" y="463.0" />
+      <point x="-28.25" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.FeedBack" target="com.vnua.hieu.entity.User" relationship="DEPENDENCY">
+      <point x="43.5" y="-72.0" />
+      <point x="765.2261029411765" y="1573.0" />
+      <point x="942.25" y="1573.0" />
+      <point x="942.25" y="950.0" />
+      <point x="874.6341911764706" y="950.0" />
+      <point x="874.6341911764706" y="890.0" />
+      <point x="860.0992647058824" y="890.0" />
+      <point x="47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Chatting" target="com.vnua.hieu.entity.User" relationship="TO_ONE">
+      <point x="-43.5" y="-94.0" />
+      <point x="996.25" y="960.0" />
+      <point x="781.2242647058824" y="960.0" />
+      <point x="781.2242647058824" y="910.0" />
+      <point x="765.0992647058824" y="910.0" />
+      <point x="-47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.User" target="com.vnua.hieu.entity.Authority" relationship="TO_MANY">
+      <point x="47.5" y="-182.0" />
+      <point x="860.0992647058824" y="483.0" />
+      <point x="817.5992647058824" y="483.0" />
+      <point x="817.5992647058824" y="473.0" />
+      <point x="840.8492647058824" y="473.0" />
+      <point x="28.25" y="28.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.TypeRoom" relationship="DEPENDENCY">
+      <point x="-48.0" y="-270.0" />
+      <point x="297.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="920.0" />
+      <point x="248.0" y="920.0" />
+      <point x="-43.5" y="61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.User" target="com.vnua.hieu.entity.Authority" relationship="DEPENDENCY">
+      <point x="-47.5" y="-182.0" />
+      <point x="765.0992647058824" y="483.0" />
+      <point x="807.5992647058824" y="483.0" />
+      <point x="807.5992647058824" y="463.0" />
+      <point x="784.3492647058824" y="463.0" />
+      <point x="-28.25" y="28.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.FeedBack" target="com.vnua.hieu.entity.Room" relationship="TO_ONE">
+      <point x="-43.5" y="-72.0" />
+      <point x="678.2261029411765" y="1573.0" />
+      <point x="471.1341911764706" y="1573.0" />
+      <point x="471.1341911764706" y="1563.0" />
+      <point x="340.47610294117646" y="1563.0" />
+      <point x="340.47610294117646" y="1553.0" />
+      <point x="297.47610294117646" y="1553.0" />
+      <point x="-48.0" y="270.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.FeedBack" target="com.vnua.hieu.entity.Room" relationship="DEPENDENCY">
+      <point x="43.5" y="-72.0" />
+      <point x="765.2261029411765" y="1573.0" />
+      <point x="942.25" y="1573.0" />
+      <point x="942.25" y="1553.0" />
+      <point x="350.47610294117646" y="1553.0" />
+      <point x="350.47610294117646" y="1543.0" />
+      <point x="393.47610294117646" y="1543.0" />
+      <point x="48.0" y="270.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.HistoryPay" target="com.vnua.hieu.entity.User" relationship="TO_ONE">
+      <point x="-38.5" y="-83.0" />
+      <point x="1185.25" y="960.0" />
+      <point x="1218.75" y="960.0" />
+      <point x="1218.75" y="920.0" />
+      <point x="781.2242647058824" y="920.0" />
+      <point x="781.2242647058824" y="910.0" />
+      <point x="765.0992647058824" y="910.0" />
+      <point x="-47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.RoomImage" target="com.vnua.hieu.entity.Room" relationship="TO_ONE">
+      <point x="-33.5" y="-50.0" />
+      <point x="311.97610294117646" y="1573.0" />
+      <point x="340.47610294117646" y="1573.0" />
+      <point x="340.47610294117646" y="1553.0" />
+      <point x="297.47610294117646" y="1553.0" />
+      <point x="-48.0" y="270.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.Utilities" relationship="DEPENDENCY">
+      <point x="-48.0" y="-270.0" />
+      <point x="297.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="920.0" />
+      <point x="54.0" y="920.0" />
+      <point x="-43.5" y="72.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.HistorySearch" target="com.vnua.hieu.entity.User" relationship="DEPENDENCY">
+      <point x="42.25" y="-72.0" />
+      <point x="889.5" y="950.0" />
+      <point x="874.6341911764706" y="950.0" />
+      <point x="874.6341911764706" y="890.0" />
+      <point x="860.0992647058824" y="890.0" />
+      <point x="47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.User" relationship="DEPENDENCY">
+      <point x="-48.0" y="-270.0" />
+      <point x="297.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="940.0" />
+      <point x="874.6341911764706" y="940.0" />
+      <point x="874.6341911764706" y="890.0" />
+      <point x="860.0992647058824" y="890.0" />
+      <point x="47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.User" target="com.vnua.hieu.entity.Village" relationship="TO_ONE">
+      <point x="47.5" y="-182.0" />
+      <point x="860.0992647058824" y="483.0" />
+      <point x="817.5992647058824" y="483.0" />
+      <point x="817.5992647058824" y="453.0" />
+      <point x="672.1911764705883" y="453.0" />
+      <point x="672.1911764705883" y="443.0" />
+      <point x="340.59926470588243" y="443.0" />
+      <point x="28.25" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.HistorySearch" target="com.vnua.hieu.entity.User" relationship="TO_ONE">
+      <point x="-42.25" y="-72.0" />
+      <point x="805.0" y="960.0" />
+      <point x="781.2242647058824" y="960.0" />
+      <point x="781.2242647058824" y="910.0" />
+      <point x="765.0992647058824" y="910.0" />
+      <point x="-47.5" y="182.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.RoomStatus" relationship="DEPENDENCY">
+      <point x="-48.0" y="-270.0" />
+      <point x="297.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="960.0" />
+      <point x="255.47610294117646" y="920.0" />
+      <point x="434.0" y="920.0" />
+      <point x="-35.5" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Province" target="com.vnua.hieu.entity.Town" relationship="TO_MANY">
+      <point x="-36.75" y="50.0" />
+      <point x="275.5992647058824" y="125.0" />
+      <point x="272.3492647058824" y="125.0" />
+      <point x="-40.0" y="-61.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Town" target="com.vnua.hieu.entity.Province" relationship="TO_ONE">
+      <point x="-40.0" y="-61.0" />
+      <point x="272.3492647058824" y="125.0" />
+      <point x="275.5992647058824" y="125.0" />
+      <point x="-36.75" y="50.0" />
+    </edge>
+    <edge source="com.vnua.hieu.entity.Room" target="com.vnua.hieu.entity.Utilities" relationship="TO_MANY">
+      <point x="48.0" y="-270.0" />
+      <point x="393.47610294117646" y="960.0" />
+      <point x="412.6341911764706" y="960.0" />
+      <point x="412.6341911764706" y="910.0" />
+      <point x="141.0" y="910.0" />
+      <point x="43.5" y="72.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3316268486916951" showDependencies="true" x="650.5" y="869.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

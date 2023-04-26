@@ -1,6 +1,6 @@
 async function loadDetailRoom() {
     var id = window.location.search.split('=')[1];
-    var url = 'http://' + urlFirst + ':8080/api/public/detailRoomForUser?id=' + id
+    var url = 'http://' + urlFirst + '/api/public/detailRoomForUser?id=' + id
     const res = await fetch(url, {
         method: 'GET',
         headers: new Headers({
@@ -8,46 +8,152 @@ async function loadDetailRoom() {
     })
     room = await res.json();
     console.log(room)
-    document.getElementById("title-name-detail").innerHTML = room.title
-    document.getElementById("tinh-detail").innerHTML = room.address.town.province.name
-    document.getElementById("huyen-detail").innerHTML = room.address.town.name
-    document.getElementById("xa-detail").innerHTML = ' >'+ room.address.name
-    document.getElementById("giaphong-detail").innerHTML = room.price+'.đ'
-    document.getElementById("area-detail").innerHTML = room.area+' mét vuông'
-    document.getElementById("datcoc-detail").innerHTML = room.deposit+'.đ'
-    document.getElementById("succhua").innerHTML = room.quantity+ ' '+room.sex
-    document.getElementById("electricity").innerHTML = room.electricity+ '/số'
-    document.getElementById("water").innerHTML = room.water+ '/khối'
-    document.getElementById("wifi").innerHTML = room.wifi+ '/tháng'
-    document.getElementById("diachicuthe").innerHTML = room.detailAddress+', '+room.address.name+', '+room.address.town.name+', '+room.address.town.province.name
-    document.getElementById("img_avatar_detail").src = room.user.avatar
-    document.getElementById("user-chuphong").innerHTML = room.user.username + ' Sđt: '+room.user.phone
-    document.getElementById("user-chuphong").href = 'profile?id='+room.user.id
-    document.getElementById("ngaydang-detail").innerHTML = 'Ngày đăng: '+ room.censorshipDate.split("T")[0]
-    document.getElementById("succhuavua").innerHTML = room.quantity+' nguời'
-    document.getElementById("succhuachat").innerHTML = Number(room.quantity + 1) +' nguời'
-    document.getElementById("motachitiet").innerHTML = room.description
-    document.getElementById("linkchat").href = 'chat?id='+room.user.id
+    document.getElementById("description").innerHTML = room.description
+    document.getElementById("room-title").innerHTML = room.title
+    document.getElementById("price-detail").innerHTML = formatmoney(room.price)+'<span>/Pernight</span>'
+    document.getElementById("area-detail").innerHTML = room.area +'m2'
+    document.getElementById("area-detail").innerHTML = room.area +'m2'
+    document.getElementById("max-detail").innerHTML = 'Max persion: '+room.quantity
+    document.getElementById("name-owner").innerHTML = '<a href="profile?id='+room.user.id+'">'+room.user.username+'</a>'
+    document.getElementById("phone").innerHTML = room.user.phone
+    document.getElementById("chatlink").href = 'chat?id='+room.user.id
+    if(room.quantityRoom > 0){
+        document.getElementById("status").innerHTML = '<span style="color:green;">Still</span>'
+    }
+    else{
+        document.getElementById("status").innerHTML = '<span style="color:green;">Still</span>'
+    }
+
     var main = ''
     for(i=0; i<room.utilities.length; i++){
-        main += '<div class="col-sm-3">'+
-                    '<li>'+
-                        '<i class="'+room.utilities[i].icon+'"></i> '+room.utilities[i].name+''+
-                    '</li>'+
-                '</div>'
+        main += room.utilities[i].name +', '
     }
-    document.getElementById("list-tienich_detail-row").innerHTML = main
+    document.getElementById("service-detail").innerHTML = main
 
-    const resp = await fetch('http://'+urlFirst+':8080/api/public/imageByRoom?id=' + room.id, { method: 'GET' })
+    const resp = await fetch('http://'+urlFirst+'/api/public/imageByRoom?id=' + room.id, { method: 'GET' })
     var listImage = await resp.json();
-    console.log(listImage)
-    document.getElementById("anh-con-lai").innerHTML = '+' +Number(listImage.length-1)
+    var mainimg = ''
     for(i=0; i<listImage.length; i++){
         if(i==0){
-            document.getElementById("img_0").src = listImage[i].link
+            mainimg += ' <div class="carousel-item active"><img style="height:500px;width:100%" class="d-block w-100" src="'+listImage[i].link+'" alt="First slide"></div>'
         }
-        if(i==1){
-            document.getElementById("img_2").src = listImage[i].link
+        else{
+            mainimg += ' <div class="carousel-item"><img style="height:500px;width:100%" class="d-block w-100" src="'+listImage[i].link+'" alt="First slide"></div>'
         }
     }
+    document.getElementById("listimg-detail").innerHTML = mainimg
+
+}
+
+async function loadSchedule() {
+    var id = window.location.search.split('=')[1];
+    var url = 'http://' + urlFirst + '/api/public/requestByRoom?id=' + id
+    const res = await fetch(url, {
+        method: 'GET',
+        headers: new Headers({
+        })
+    })
+    schedule = await res.json();
+    var main = ''
+    for(i=0; i<schedule.length; i++){
+        main += ' <tr>'+
+            '<td>'+schedule[i].fromDate+'</td>'+
+            '<td>'+schedule[i].toDate+'</td>'+
+            '<td>'+dayOfWeek(new Date(schedule[i].fromDate).getDay())+'</td>'+
+            '</tr>'
+    }
+    document.getElementById("listSchedule").innerHTML = main
+    $('#example').DataTable();
+}
+
+function dayOfWeek(num){
+    if(num == 0){
+        return 'Sunday'
+    }
+    if(num == 1){
+        return 'Monday '
+    }
+    if(num == 2){
+        return 'Tuesday '
+    }
+    if(num == 3){
+        return 'Wednesday '
+    }
+    if(num == 4){
+        return 'Thursday '
+    }
+    if(num == 5){
+        return 'Friday '
+    }
+    if(num == 6){
+        return 'Saturday '
+    }
+}
+
+async function addOrder() {
+    var id = window.location.search.split('=')[1];
+    var url = 'http://' + urlFirst + '/api/user/AddrequestByUser';
+    var token = localStorage.getItem("token");
+    if(token === null){
+        alert("Please login to perform this function");
+        return;
+    }
+    var fromdate = document.getElementById("fromdate").value
+    var todate = document.getElementById("todate").value
+
+    var request = {
+        "fromDate":fromdate,
+        "toDate":todate,
+        "room":{
+            "id":id
+        }
+    }
+    const resp = await fetch(url, {
+        method: 'POST',
+        headers: new Headers({
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+        }),
+        body: JSON.stringify(request)
+    })
+    const stt = await resp.text();
+    if(resp.status < 300){
+        if(stt == '0'){
+            swal({
+                    title: "Notification",
+                    text: "booking request sent successfully!",
+                    type: "success"
+                },
+                function(){
+                    window.location.reload()
+                });
+        }
+        if(stt == '1'){
+            swal({
+                    title: "Notification",
+                    text: "already booked during this time!",
+                    type: "warning"
+                },
+                function(){
+                    return;
+                });
+        }
+    }
+    else{
+        swal({
+                title: "Notification",
+                text: "booking request sent error!",
+                type: "error"
+            },
+            function(){
+            });
+    }
+}
+
+function formatmoney(money) {
+    var USD = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+    return USD.format(money);
 }

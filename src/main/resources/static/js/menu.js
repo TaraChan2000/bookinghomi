@@ -4,8 +4,7 @@ function loadMenu(){
 	var authen;
 	var account = '';
     if(token === null){
-		authen = '<i class="fa fa-user"></i><a href="login"> Đăng Nhập</a>'
-
+		authen = '<i class="fa fa-user"></i><a href="login"> Login</a>'
 	}
 	else{
 		authen = '<div class="dropdown show btn-logout">'+
@@ -13,13 +12,13 @@ function loadMenu(){
 					'<i class="fa fa-user"></i> '+username+''+
 					'</a>'+
 					'<div class="dropdown-menu"  aria-labelledby="dropdownMenuLink">'+
-					'<a class="dropdown-item" href="profile">Tài khoản</a>'+
-					'<a class="dropdown-item" href="myPost">Bài đăng</a>'+
-					'<a class="dropdown-item" href="updateUser">Cập nhật thông tin</a>'+
-					'<a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a>'+
+					'<a class="dropdown-item" href="profile">Post</a>'+
+					'<a class="dropdown-item" href="myPost">Account</a>'+
+					'<a class="dropdown-item" href="updateUser">Update information</a>'+
+					'<a class="dropdown-item" href="#" onclick="logout()">Logout</a>'+
 					'</div>'+
 				'</div>'
-		account = '<a style="font-size: 15px;" id="link" class="nav-link" href="profile"><i class="fa fa-user"></i> Tài khoản</a>';
+		account = '<a style="font-size: 15px;" id="link" class="nav-link" href="profile"><i class="fa fa-user"></i> Account</a>';
 	}
 	const main = '<div class="container">'+
 	'<div class="col-md-12" >'+
@@ -62,7 +61,7 @@ function loadMenu(){
 				authen+
 			'</div>'+
 			'<div class="col-lg-2 col-sm-4 col-md-4">'+
-				'<button class="btn-dangtin"><i class="fa fa-edit"></i> <a style="color:#fff" href="upload">Đăng tin</a></button>'+
+				'<button class="btn-dangtin"><i class="fa fa-edit"></i> <a style="color:#fff" href="upload">Post a message</a></button>'+
 			'</div>'+
 		'</div>'+
 	'</div>'+

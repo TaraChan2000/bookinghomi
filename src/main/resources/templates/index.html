@@ -2,362 +2,136 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="Sona Template">
+    <meta name="keywords" content="Sona, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homi  | Hotel</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css.map">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot">
 
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
-    <script type="text/javascript" th:src="@{/js/urlGlo.js}"></script>
-    <script type="text/javascript" th:src="@{/js/menu.js}"></script>
-    <script type="text/javascript" th:src="@{/js/main.js}"></script>
-    <script type="text/javascript" th:src="@{/js/authen.js}"></script>
-    <script type="text/javascript" th:src="@{/js/room.js}"></script>
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../cssnew/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../cssnew/style.css" type="text/css">
 </head>
 
 <body>
 <!-- menu -->
-<div id="header">
+<div id="menu">
 
 </div>
 
-
-<!-- banner -->
-<div class="col-lg-12 banner">
-    <div class="row main-menu">
-        <div class="col-lg-3 logo">
-
-        </div>
-        <div class="col-lg-9 menu">
-
-        </div>
-        <div class="col-lg-6">
-            <h1 class="title">Ứng dụng tìm kiếm phòng trọ miễn phí cho người đi thuê hàng đầu Việt Nam</h1>
-        </div>
-    </div>
-</div>
-
-
-
-<!-- xu hướng tìm kiếm -->
-<div class="col-lg-12">
-    <p class="xuhuong">Xu hướng tìm kiếm</p>
-</div>
-<div class="col-lg-12">
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="col-sm-12 haibatrung">
-                <p class="loc-name">hai bà trưng</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="col-sm-12 caugiay">
-                <p class="loc-name">Càu giấy</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="col-sm-12 dongda">
-                <p class="loc-name">Đống đa</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="col-sm-12 namtuliem">
-                <p class="loc-name">Nam từ liêm</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="col-sm-12 bactuliem">
-                <p class="loc-name">Bắc từ liêm</p>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="col-sm-12 hoangmai">
-                <p class="loc-name">Hoàng mai</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<!-- danh sách phòng -->
-<div class="col-lg-12">
-    <div class="row">
-
-        <!-- list room -->
-        <div class="col-lg-8 list-room">
-            <div class="row">
-                <div class="col-sm-3">
-                    <p id="title-new">Phòng mới nhất</p>
+<!-- Hero Section Begin -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-text">
+                    <h1>Homi Hotel</h1>
+                    <p>Here are the hotels where you can book the best hotel service,
+                        including suggestions for you to find cheap hotel rooms.</p>
+                    <a href="#" class="primary-btn">Discover Now</a>
                 </div>
-                <div class="col-sm-7"></div>
-                <div class="col-sm-2"><button class="btn btn-primary more">Xem tất cả</button></div>
             </div>
+        </div>
+    </div>
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="http://res.cloudinary.com/dxccmy7an/image/upload/v1677074455/ofpcsb8zanzhyphrqggg.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="http://res.cloudinary.com/dxccmy7an/image/upload/v1677074478/ohq1czyibzj5j1ur51z0.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="http://res.cloudinary.com/dxccmy7an/image/upload/v1677074505/yrhi6belq076y3dy6zdg.jpg"></div>
+    </div>
+</section>
+<!-- Hero Section End -->
 
-
-            <div id="listRoomIndex">
-                <!-- 1 phòng -->
-                <!-- <div class="row single-room">
-                    <div class="col-md-4">
-                        <img id="image-room" src="image/room.jpg">
+<!-- About Us Section Begin -->
+<section class="aboutus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>About Us</span>
+                        <h2>Book intercity hotels on Vietnam</h2>
                     </div>
-                    <div class="col-md-8">
-                        <h5>Phòng Kim Giang, đủ đồ, gần trường, chợ, bến xe, full tiện ích</h5>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <span class="type-room"><i class="fa fa-home"></i> Phòng cho thuê</span><br>
-                                <span class="type-room"><i class="fa fa-user"></i> Nam& Nữ</span><br>
-                                <span class="type-room"> <i class="fa fa-area-chart"></i>35m2</span><br>
-                                <span class="type-room"><i class="fa fa-location-arrow"></i>Số 64, Ngô xuân
-                                    quảng</span>
-                            </div>
-                            <div class="col-md-4">
-                                <h2 class="price">2.5</h2>
-                                <p class="price">tr/phòng</p>
-                            </div>
+                    <p class="f-para">Homi.com is a leading online accommodation website. We are passionate about travel.
+                        Every day, we inspire and reach millions of tourists from all over the country.</p>
+                    <p class="s-para">So when it comes to booking the perfect hotel, vacation rental, resort,
+                        apartment, guest house, or tree house, we’ve got you covered.</p>
+                    <a href="#" class="primary-btn about-btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-pic">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="../images/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="../images/about-2.jpg" alt="">
                         </div>
                     </div>
                 </div>
-                <hr> -->
-
-
-            </div>
-
-            <div class="col-md-12">
-                <p style="cursor: pointer;" id="view-more" class="view-all"><a class="view-all" onclick="loadMoreRoomIndex()">Xem thêm</a></p>
             </div>
         </div>
-
-        <!-- content -->
     </div>
-</div>
+</section>
+<!-- About Us Section End -->
 
+<!-- Services Section End -->
+<section class="services-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>What We Do</span>
+                    <h2>Discover more hotels</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="listRoomIndex">
 
-
-<!-- footer -->
-<footer class="col-md-12 footer">
-    <div class="row">
-        <div class="col-md-12">
-            <p style="font-size: 50px; font-weight: bold;">VNUA<i style="color: #F73486;" class="fa fa-home"></i>
-            </p>
         </div>
         <div class="col-md-12">
-            <hr style="border: 1px dashed black;" />
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>Điều khoản và chính sách</p>
-                </div>
-                <div class="col-md-6">
-                    <p>@ Website được copy của ohana</p>
-                </div>
-            </div>
+            <p style="cursor: pointer; text-align: center;" id="view-more"><a onclick="loadMoreRoomIndex()">Load More</a></p>
         </div>
     </div>
-</footer>
+</section>
 
 
-<!-- Large modal search -->
+<footer id="footer" class="footer-section"> </footer>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="row">
-                <div class="col-md-11">
-                    <form>
-                        <input class="form-control mr-sm-12" type="search" placeholder="Search" aria-label="Search"
-                               id="search-full">
-                    </form>
-                </div>
-                <div class="col-md-1">
-                    <i class="fa fa-remove remove"></i>
-                </div>
-                <div class="col-md-12 go-search">
-                    <a href="#">Đi đến trang tìm kiếm</a>
-                </div>
-                <div class="col-md-12">
-                    <hr>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <p>có 4 kết quả được tìm thấy</p>
-            </div>
-            <div class="list-room-search col-lg-12">
-                <div class="row">
-                    <!-- 1 phòng -->
-                    <div class="col-md-12 signle-room-search">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href=""><img class="image-search" src="image/anh.jpg"></a>
-                            </div>
-                            <div class="col-md-7 detail-search">
-                                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-                                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
-                                </p>
-                                <p>Đường: Ngô xuân quảng, học viện</p>
-                                <p>Giá: 9.500.000đ/tháng</p>
-                            </div>
-                            <div class="col-md-2 connect">
-                                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
-                                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
-                                <p>Nguyễn nam khanh</p>
-                                <p class="phone">0217833343</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 1 phòng -->
-                    <div class="col-md-12 signle-room-search">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href=""><img class="image-search" src="image/anh1.jpg"></a>
-                            </div>
-                            <div class="col-md-7 detail-search">
-                                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-                                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
-                                </p>
-                                <p>Đường: Ngô xuân quảng, học viện</p>
-                                <p>Giá: 9.500.000đ/tháng</p>
-                            </div>
-                            <div class="col-md-2 connect">
-                                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
-                                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
-                                <p>Nguyễn nam khanh</p>
-                                <p class="phone">0217833343</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- 1 phòng -->
-                    <div class="col-md-12 signle-room-search">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href=""><img class="image-search" src="image/anh2.jpg"></a>
-                            </div>
-                            <div class="col-md-7 detail-search">
-                                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-                                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
-                                </p>
-                                <p>Đường: Ngô xuân quảng, học viện</p>
-                                <p>Giá: 9.500.000đ/tháng</p>
-                            </div>
-                            <div class="col-md-2 connect">
-                                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
-                                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
-                                <p>Nguyễn nam khanh</p>
-                                <p class="phone">0217833343</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-12 more">
-                        <p><a href="">Xem thêm</a></p>
-                    </div>
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-
-
-                </div>
-            </div>
-            <!-- lịch sử tìm kiếm -->
-            <div class="col-md-12">
-                <p>Lịch sử tìm kiếm</p>
-            </div>
-
-            <div class="col-md-12 history">
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><a href="">trâu quỳ gia lâm</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Thời gian: 2022-19-06</p>
-                    </div>
-                    <div class="col-md-1"><i class="fa fa-remove"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</body>
-<script type="text/javascript">
-    window.onload = function () {
-        loadMenu();
+<script>
+    window.onload = function(){
         loadRoomIndex(0);
     }
 </script>
+<!-- Js Plugins -->
+<script src="../jsnew/menu.js"></script>
+<script src="../js/room.js"></script>
+<script src="../js/urlGlo.js"></script>
+<script src="../jsnew/jquery-3.3.1.min.js"></script>
+<script src="../jsnew/bootstrap.min.js"></script>
+<script src="../jsnew/jquery.magnific-popup.min.js"></script>
+<script src="../jsnew/jquery.nice-select.min.js"></script>
+<script src="../jsnew/jquery-ui.min.js"></script>
+<script src="../jsnew/jquery.slicknav.js"></script>
+<script src="../jsnew/owl.carousel.min.js"></script>
+<script src="../jsnew/main.js"></script>
+</body>
 
 </html>

@@ -2,40 +2,51 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="description" content="Sona Template">
+  <meta name="keywords" content="Sona, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Homi | profile</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css.map">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot">
 
-  <!-- jQuery library -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="../cssnew/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/flaticon.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/jquery-ui.min.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="../cssnew/style.css" type="text/css">
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
 
   <script type="text/javascript" th:src="@{/js/urlGlo.js}"></script>
-  <script type="text/javascript" th:src="@{/js/menu.js}"></script>
   <script type="text/javascript" th:src="@{/js/main.js}"></script>
   <script type="text/javascript" th:src="@{/js/authen.js}"></script>
   <script type="text/javascript" th:src="@{/js/profile.js}"></script>
   <script type="text/javascript" th:src="@{/js/follow.js}"></script>
+
 </head>
 
 <body>
-
-<div id="header">
+<div id="menu">
 
 </div>
 
 <div class="container">
   <div class="col-md-12 title-profile">
-    <p><a href="index.html">Vnua >></a> </p>
-    <p id="tieudeten">Trang cá nhân của Hiếu</p>
+    <p><a href="/">Booking >></a> </p>
+    <p id="tieudeten">Tara's personal page</p>
   </div>
 </div>
 
@@ -44,39 +55,26 @@
 <div class="container">
   <div class="col-md-12 profile">
     <div class="row">
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-sm-2">
-            <div class="img-pro"><img id="avatar_profile" src="image/avatar.jpg" class="avatar-profile">
-            </div>
-          </div>
-          <div class="col-sm-8 infor-profile">
-            <p class="infor-name" id="username_profile">Hieu</p>
-            <p class="theodoi" data-toggle="modal" data-target="#theodoi" id="duoctheodois"> Có 3 người theo dõi</p>
-            <div class="theodoigiua">|</div>
-            <p class="dangtheodoi" data-toggle="modal" data-target="#dangtheodoi" id="theodois">đang theo dõi 3 người
-            </p>
-
-            <div id="div_btn_theodoi">
-              <!-- <button id="btn-theodoi" class="btn-warning fllow"><i class="fa fa-plus"></i>Theo
-                  dõi</button> -->
-            </div>
-          </div>
-        </div>
+      <div class="col-md-2">
+        <img style=" width: 100%;margin: 0" id="avatar_profile">
       </div>
-
-      <div class="col-md-6 infor-user-profile">
-        <p class="ins"><i class="fa fa-calendar"></i>Ngày tham gia:
+      <div class="col-md-6">
+        <p class="ins"><i class="fa fa-calendar"></i>Join date:
         <p class="ins tus" id="ngaythamgia">23 / 01/2018</p>
         </p>
-        <p class="ins"><i class="fa fa-map-marker"></i>Địa chỉ:
-        <p class="ins tus" id="diachi">Trâu quỳ, gia lâm</p>
+        <p class="ins"><i class="fa fa-map-marker"></i>Address:
+        <p class="ins tus" id="diachi">Ninh Kieu, Can THo</p>
         </p>
-        <p class="ins"><i class="fa fa-comment"></i>Phản hồi chat:
-        <p class="ins tus">Trong 15 phút</p>
+        <p class="ins"><i class="fa fa-comment"></i>
+          chat feedback:
+        <p class="ins tus">15 Min</p>
         </p>
       </div>
       <!-- content -->
+
+      <div class="col-md-6">
+
+      </div>
     </div>
   </div>
 </div>
@@ -84,13 +82,10 @@
 
 <div class="container">
   <div class="col-md-12 post-profile">
-    <p>Tin đang đăng <span id="numberTin">- 0 tin</span> </p>
+    <p>Room is posting <span id="numberTin">- 0 Room</span> </p>
     <hr>
     <div class="list-post-profile" id="list-post-profile">
-      <!-- <svg fill="#ccc" width="100" height="100" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="15.6 37.6 80 50"><path class="st0" d="M85.6 52.8s-5.1-7-13.2-6.6c-8.3-11.4-14.7-1.4-14.7-1.4-.6-.4-1.4-.6-2.2-.6-.8 0-1.5.2-2.2.6 0 0-6.4-10-14.7 1.4-8.1-.4-13.2 6.6-13.2 6.6-4.9 3-8.2 8.4-8.2 14.5 0 9.4 7.6 17 17 17 8.5 0 15.6-6.3 16.8-14.5 0 0 1.3 1.7 4.1 1.7s4.6-1.7 4.6-1.7C60.9 78 68 84.2 76.5 84.2c9.4 0 17-7.6 17-17 .3-6-3-11.4-7.9-14.4zM33.9 79.5c-6.4 0-11.6-5.2-11.6-11.6 0-6.4 5.2-11.6 11.6-11.6s11.6 5.2 11.6 11.6c.1 6.4-5.2 11.6-11.6 11.6zm42.9 0c-6.4 0-11.7-5.2-11.7-11.6 0-6.4 5.2-11.6 11.7-11.6 6.4 0 11.6 5.2 11.6 11.6 0 6.4-5.2 11.6-11.6 11.6z"></path><path class="st0" d="M26.9 66.9c-.4-1-.6-2-.7-3-1.2 2.1-1.5 4.7-.6 7.1 1.6 4.3 6.5 6.5 10.8 4.9.9-.3 1.7-.8 2.4-1.4-5 .4-10-2.5-11.9-7.6zM70.7 66.9c-.4-1-.6-2-.7-3-1.2 2.1-1.5 4.7-.6 7.1 1.6 4.3 6.5 6.5 10.8 4.9.9-.3 1.7-.8 2.4-1.4-5 .4-10-2.5-11.9-7.6z"></path></svg>
-      <div class="title-none">
-          <p>Người này chưa có tin đăng cá nhân nào</p>
-      </div> -->
+
     </div>
     <div class="list-post-full" id="list-post-full">
 
@@ -100,11 +95,11 @@
             <a href=""><img class="image-search" src="image/anh.jpg"></a>
           </div>
           <div class="col-md-7 detail-search">
-            <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-            <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng</p>
-            <p>Đường: Ngô xuân quảng, học viện</p>
-            <p>Giá: 9.500.000đ/tháng</p>
-            <p> <i class="fa fa-clock"></i>18 giờ trước</p>
+            <h5><a href="">Mini apartment room for 2 people, newly built clean and beautiful room</a></h5>
+            <p>Address<i class="fa fa-map-marker iconmap"></i>: Ninh Kieu, Can Tho</p>
+            <p>Street: Mac Thien Tich</p>
+            <p>Price: 500$/moth</p>
+            <p> <i class="fa fa-clock"></i>18 hours ago</p>
           </div>
         </div>
       </div>
@@ -112,201 +107,13 @@
     </div>
   </div>
 </div>
-
-<!-- footer -->
-
-
-
-<!-- Large modal search -->
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="row">
-        <div class="col-md-11">
-          <form>
-            <input class="form-control mr-sm-12" type="search" placeholder="Search" aria-label="Search"
-                   id="search-full">
-          </form>
-        </div>
-        <div class="col-md-1">
-          <i class="fa fa-remove remove"></i>
-        </div>
-        <div class="col-md-12 go-search">
-          <a href="#">Đi đến trang tìm kiếm</a>
-        </div>
-        <div class="col-md-12">
-          <hr>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <p>có 4 kết quả được tìm thấy</p>
-      </div>
-      <div class="list-room-search col-lg-12">
-        <div class="row">
-          <!-- 1 phòng -->
-          <div class="col-md-12 signle-room-search">
-            <div class="row">
-              <div class="col-md-3">
-                <a href=""><img class="image-search" src="image/anh.jpg"></a>
-              </div>
-              <div class="col-md-7 detail-search">
-                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
-                </p>
-                <p>Đường: Ngô xuân quảng, học viện</p>
-                <p>Giá: 9.500.000đ/tháng</p>
-              </div>
-              <div class="col-md-2 connect">
-                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
-                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
-                <p>Nguyễn nam khanh</p>
-                <p class="phone">0217833343</p>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- 1 phòng -->
-          <div class="col-md-12 signle-room-search">
-            <div class="row">
-              <div class="col-md-3">
-                <a href=""><img class="image-search" src="image/anh1.jpg"></a>
-              </div>
-              <div class="col-md-7 detail-search">
-                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
-                </p>
-                <p>Đường: Ngô xuân quảng, học viện</p>
-                <p>Giá: 9.500.000đ/tháng</p>
-              </div>
-              <div class="col-md-2 connect">
-                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
-                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
-                <p>Nguyễn nam khanh</p>
-                <p class="phone">0217833343</p>
-
-              </div>
-            </div>
-          </div>
-
-
-          <!-- 1 phòng -->
-          <div class="col-md-12 signle-room-search">
-            <div class="row">
-              <div class="col-md-3">
-                <a href=""><img class="image-search" src="image/anh2.jpg"></a>
-              </div>
-              <div class="col-md-7 detail-search">
-                <h5><a href="">Phòng trung cư mini ở được 2 người, phòng mới xây sạch đẹp</a></h5>
-                <p>Địa chỉ<i class="fa fa-map-marker iconmap"></i>: Trâu quỳ, gia lâm, hai bà trưng
-                </p>
-                <p>Đường: Ngô xuân quảng, học viện</p>
-                <p>Giá: 9.500.000đ/tháng</p>
-              </div>
-              <div class="col-md-2 connect">
-                <button class="btn btn-success"><i class="fa fa-phone"></i>Liên hệ</button>
-                <button class="btn btn-success chat"><i class="fa fa-comment"></i>Chat</button>
-                <p>Nguyễn nam khanh</p>
-                <p class="phone">0217833343</p>
-
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-12 more">
-            <p><a href="">Xem thêm</a></p>
-          </div>
-          <div class="col-md-12">
-            <hr>
-          </div>
-
-
-        </div>
-      </div>
-      <!-- lịch sử tìm kiếm -->
-      <div class="col-md-12">
-        <p>Lịch sử tìm kiếm</p>
-      </div>
-
-      <div class="col-md-12 history">
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <p><a href="">trâu quỳ gia lâm</a></p>
-          </div>
-          <div class="col-md-3">
-            <p>Thời gian: 2022-19-06</p>
-          </div>
-          <div class="col-md-1"><i class="fa fa-remove"></i></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- được theo dõi -->
 <div class="modal fade" id="theodoi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Được theo dõi</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Followed</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -316,13 +123,13 @@
           <li>
             <div>
               <div class="div_img_theodoi"><img src="image/avatar.jpg" class="img_theodoi"></div>
-              <p class="username_theodoi"><a href="profile.html?id=9">Dương tiễn</a></p>
+              <p class="username_theodoi"><a href="profile.html?id=9">Tara</a></p>
             </div>
           </li>
           <li>
             <div>
               <div class="div_img_theodoi"><img src="image/avatar.jpg" class="img_theodoi"></div>
-              <p class="username_theodoi"><a href="profile.html?id=9">Dương tiễn</a></p>
+              <p class="username_theodoi"><a href="profile.html?id=9">Tara</a></p>
             </div>
           </li>
         </ul>
@@ -340,7 +147,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">đang theo dõi</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Followed</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -350,7 +157,7 @@
           <li>
             <div>
               <div class="div_img_theodoi"><img src="image/avatar.jpg" class="img_theodoi"></div>
-              <p class="username_theodoi"><a href="profile.html?id=9">Dương tiễn</a></p>
+              <p class="username_theodoi"><a href="profile.html?id=9">Tara</a></p>
             </div>
           </li>
 
@@ -362,14 +169,23 @@
     </div>
   </div>
 </div>
-</body>
+
+
+<footer id="footer" class="footer-section"> </footer>
 <script>
   window.onload = function () {
-    loadMenu();
     loadAccount();
-    dangtheodoi();
     loadRoomProfile();
   }
 </script>
+<script src="../jsnew/menu.js"></script>
+<script src="../jsnew/jquery-3.3.1.min.js"></script>
+<script src="../jsnew/bootstrap.min.js"></script>
+<script src="../jsnew/jquery.magnific-popup.min.js"></script>
+<script src="../jsnew/jquery.nice-select.min.js"></script>
+<script src="../jsnew/jquery-ui.min.js"></script>
+<script src="../jsnew/jquery.slicknav.js"></script>
+<script src="../jsnew/main.js"></script>
+</body>
 
 </html>

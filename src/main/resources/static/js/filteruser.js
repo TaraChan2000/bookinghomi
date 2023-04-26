@@ -2,11 +2,11 @@ async function checkUser(){
 
     var token = localStorage.getItem("token");
     if(token === null){
-		alert("hãy đăng nhập để sử dụng chức năng này!")
+		alert("Please login to use this function!")
 		window.location.replace("login")
 	}
 	else{
-		const res = await fetch('http://'+urlFirst+':8080/api/userlogged', { 
+		const res = await fetch('http://'+urlFirst+'/api/userlogged', { 
 		     method: 'POST', 
 		     headers: new Headers({ 
 		     	'Authorization': 'Bearer '+token, 
@@ -16,7 +16,7 @@ async function checkUser(){
 		var user = await res.json();
 		var check = 0;
 	    for(i=0; i<user.authorities.length; i++){
-	    	if(user.authorities[i].name === 'ROLE_USER'){
+	    	if(user.authorities[i].name === 'ROLE_USER' || user.authorities[i].name === 'ROLE_ADMIN'){
 	    		check = 1;
 	    	}
 	    }
